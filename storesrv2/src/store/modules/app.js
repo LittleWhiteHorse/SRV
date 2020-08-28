@@ -1,4 +1,6 @@
 import router from '@/router'
+import routers from '@/router/routers'
+import { getMenuByRoute } from '@/libs/utils'
 
 export default {
   state: {
@@ -7,7 +9,7 @@ export default {
   getters: {
     menuList () {
       console.log(router)
-      return '123456'
+      return getMenuByRoute(routers)
     }
   }
 }

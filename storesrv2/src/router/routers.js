@@ -44,7 +44,8 @@ export default [
         name: 'new_phone',
         meta: {
           icon: 'md-add',
-          title: '新建手机应用'
+          title: '新建手机应用',
+          hideInMenu: true
         },
         component: () => import('@/views/app/editPhoneApp.vue')
       },
@@ -150,6 +151,25 @@ export default [
           title: '新建手机应用推送'
         },
         component: () => import('@/views/send/editPhoneApp.vue')
+      }
+    ]
+  },
+  {
+    path: '/directive',
+    name: 'directive',
+    meta: {
+      hideInBread: true
+    },
+    component: Main,
+    children: [
+      {
+        path: 'directive_page',
+        name: 'directive_page',
+        meta: {
+          icon: 'ios-navigate',
+          title: '指令'
+        },
+        component: () => import('@/views/directive/directive.vue')
       }
     ]
   }

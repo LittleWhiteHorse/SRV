@@ -9,8 +9,6 @@ Vue.use(ViewUI)
 
 Vue.config.productionTip = false
 
-console.log(router)
-
 new Vue({
   router,
   store,

@@ -7,7 +7,7 @@
       <Sider ref="side1" hide-trigger collapsible :collapsed-width="78" v-model="isCollapsed">
         <div style="height: 64px; margin: 10px; border: 2px dashed #ffffff; border-radius: 10px"></div>
         <!--导航菜单-->
-        <side-menu :menu-list="menuList"></side-menu>
+        <side-menu :menu-list="menuList" @on-select="turnToPage"></side-menu>
       </Sider>
       <Layout>
         <Header :style="{padding: 0}" class="layout-header-bar">
@@ -16,41 +16,9 @@
         </Header>
         <Content class="main-content">
           <Content style="overflow: auto;">
-            <Card>
-
-              Content
-              <br/>
-              Content
-              <br/>
-              Content
-              <br/>
-              Content
-              <br/>
-              Content
-              <br/>
-              Content
-              <br/>
-              Content
-              <br/>
-              Content
-              <br/>
-              Content
-              <br/>
-              Content
-              <br/>
-              Content
-              <br/>
-              Content
-              <br/>
-              Content
-              <br/>
-              Content
-              <br/>
-              Content
-              <br/>
-              Content
-              {{menuList}}
-            </Card>
+            <keep-alive>
+              <router-view/>
+            </keep-alive>
           </Content>
         </Content>
       </Layout>
@@ -83,13 +51,15 @@ export default {
       ]
     },
     menuList () {
-      console.log(this.$store.getters.menuList)
       return this.$store.getters.menuList
     }
   },
   methods: {
     collapsedSider () {
       this.$refs.side1.toggleCollapse()
+    },
+    turnToPage (route) {
+      this.$router.push({ name: route })
     }
   }
 }

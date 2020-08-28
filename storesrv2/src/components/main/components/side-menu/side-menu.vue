@@ -3,37 +3,35 @@
 </style>
 <template>
   <div>
-    <Menu active-name="1-2" theme="dark" width="auto" :class="menuitemClasses" accordion>
-      <Submenu name="1">
-        <template slot="title">
-          <Icon type="ios-paper" />
-          内容管理{{menuList}}
+    <Menu active-name="1-1" theme="light" width="auto" :class="menuitemClasses" accordion @on-select="handleSelect">
+      <template v-for="item in menuList">
+        <template v-if="item.children && item.children.length > 1">
+          <Submenu :name="item.name" v-if="item.children && item.children.length > 1" :key="item.name">
+            <template slot="title">
+              <Icon :type="item.meta.icon" />
+              {{item.meta.title}}
+            </template>
+            <MenuItem v-for="p in item.children" :key="p.name" :name="p.name">{{p.meta.title}}</MenuItem>
+          </Submenu>
         </template>
-        <MenuItem name="1-1">文章管理</MenuItem>
-      </Submenu>
-      <Submenu name="2">
-        <template slot="title">
-          <Icon type="ios-people" />
-          用户管理
+        <template v-if="item.children && item.children.length === 1">
+          <MenuItem :name="item.children[0].name" :key="item.name">
+            <Icon :type="item.children[0].meta.icon" />
+            {{item.children[0].meta.title}}
+          </MenuItem>
         </template>
-        <MenuItem name="2-1">新增用户</MenuItem>
-      </Submenu>
-      <Submenu name="3">
-        <template slot="title">
-          <Icon type="ios-stats" />
-          统计分析
-        </template>
-        <MenuItem name="3-1">新增和启动</MenuItem>
-      </Submenu>
+      </template>
     </Menu>
   </div>
 </template>
 <script>
+import mixin from './mixin'
 export default {
   name: 'sideMenu',
+  mixins: [mixin],
   props: {
     menuList: {
-      type: String
+      type: Array
     }
   },
   data () {
@@ -53,12 +51,13 @@ export default {
       ]
     }
   },
-  methods: {},
-  created () {
-
+  methods: {
+    handleSelect (name) {
+      console.log(name)
+      this.$emit('on-select', name)
+    }
   },
-  mounted () {
-
+  created () {
   }
 }
 </script>
