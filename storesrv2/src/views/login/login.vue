@@ -26,6 +26,7 @@
   </div>
 </template>
 <script>
+import { mapActions } from 'vuex'
 export default {
   name: 'app',
   data () {
@@ -46,14 +47,20 @@ export default {
     }
   },
   methods: {
+    ...mapActions([
+      'handleLogin'
+    ]),
     handleSubmit () {
       this.$refs.formInline.validate((valid) => {
-        if (valid) {
-          this.$Message.success('Success!')
-          this.$router.push({ name: 'Home' })
-        } else {
-          this.$Message.error('Fail!')
-        }
+        console.log(this.formInline.user)
+        console.log(this.formInline.password)
+        this.handleLogin({ username: this.formInline.user, password: this.formInline.password }).then(res => {
+          this.getUserInfo().then(res => {
+            this.$router.push({
+              name: this.$config.homeName
+            })
+          })
+        })
       })
     }
   },

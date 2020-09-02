@@ -16,7 +16,9 @@ module.exports = {
     'vue/no-parsing-error': [2, { "x-invalid-end-tag": false }],
     'semi': 0,
     'prefer-const': 'off',
-    "eqeqeq": 'off'
+    "eqeqeq": 'off',
+    "no-multiple-empty-lines": [0, {"max": 100}],
+    "no-undef": 1
   },
   overrides: [
     {
