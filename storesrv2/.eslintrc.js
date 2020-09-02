@@ -15,7 +15,8 @@ module.exports = {
     'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'vue/no-parsing-error': [2, { "x-invalid-end-tag": false }],
     'semi': 0,
-    'prefer-const': 'off'
+    'prefer-const': 'off',
+    "eqeqeq": 'off'
   },
   overrides: [
     {

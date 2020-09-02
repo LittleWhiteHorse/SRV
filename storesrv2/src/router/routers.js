@@ -5,12 +5,30 @@ export default [
   {
     path: '/',
     name: 'login',
+    meta: {
+      title: '登录'
+    },
     component: Login
   },
   {
     path: '/',
     name: 'Home',
-    component: Main
+    redirect: '/home',
+    component: Main,
+    meta: {
+      title: '首页'
+    },
+    children: [
+      {
+        path: '/home',
+        name: 'home',
+        meta: {
+          title: '首页',
+          hideInMenu: true
+        },
+        component: () => import('@/views/app/appList.vue')
+      }
+    ]
   },
   {
     path: '/app',
@@ -151,6 +169,26 @@ export default [
           title: '新建手机应用推送'
         },
         component: () => import('@/views/send/editPhoneApp.vue')
+      }
+    ]
+  },
+  {
+    path: '/password',
+    name: 'password',
+    meta: {
+      hideInBread: true
+    },
+    component: Main,
+    children: [
+      {
+        path: 'edit',
+        name: 'edit',
+        meta: {
+          icon: 'ios-navigate',
+          title: '修改密码',
+          hideInMenu: true
+        },
+        component: () => import('@/views/login/password.vue')
       }
     ]
   },

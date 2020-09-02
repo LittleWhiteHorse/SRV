@@ -1,0 +1,8 @@
+module.default = {
+  publicPath: process.env.NODE_ENV === 'production'
+    ? './'
+    : './',
+  devServer: {
+    proxy: ''
+  }
+}
