@@ -40,7 +40,6 @@ export default {
         })).then(res => {
           const data = res.data
           commit('setToken', data.message)
-          commit('setUserName', username)
           resolve(res)
         }).catch(err => {
           reject(err)
@@ -50,7 +49,7 @@ export default {
     // 退出
     handleLogout ({ state, commit }) {
       return new Promise((resolve, reject) => {
-        logout(state.token).then(res => {
+        logout().then(res => {
           commit('setToken', '')
           commit('setUserName', '')
           resolve(res)
@@ -62,7 +61,9 @@ export default {
     // 获取服务店名称信息
     getStoreInfo ({ state, commit }) {
       return new Promise((resolve, reject) => {
-        getAfterUserInfo(state.token).then(res => {
+        getAfterUserInfo().then(res => {
+          const data = JSON.parse(res.data)
+          commit('setUserName', data.respondData)
           resolve(res)
         }).catch(err => {
           reject(err)

@@ -5,7 +5,7 @@ import routers from './routers'
 // import Main from '@/components/main/main'
 import store from '@/store'
 import ViewUI from 'view-design'
-import { setToken, getToken } from '@/libs/utils'
+import { setToken, getToken, canTurnTo } from '@/libs/utils'
 import config from '@/config'
 const { homeName } = config
 Vue.use(VueRouter)
