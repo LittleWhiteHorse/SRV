@@ -26,8 +26,94 @@ export default [
           title: '首页',
           hideInMenu: true
         },
-        component: () => import('@/views/app/appList.vue')
+        component: () => import('@/views/app/userList.vue')
       }
+    ]
+  },
+  // {
+  //   path: '/app',
+  //   name: 'app',
+  //   // component: Main,
+  //   meta: {
+  //     title: '登记用户',
+  //     icon: 'md-apps'
+  //   },
+  //   children: [
+  //     {
+  //       path: 'registerUser',
+  //       name: 'register_user',
+  //       meta: {
+  //         icon: 'md-apps',
+  //         title: '登记用户'
+  //       },
+  //       component: () => import('@/views/app/registerUser.vue')
+  //     }
+  //   ]
+  // },
+  {
+    path: '/register',
+    name: 'register',
+    meta: {
+      // hideInBread: true
+      title: '登记用户',
+      icon: 'md-apps'
+    },
+    component: Main,
+    children: [
+      {
+        path: 'registerUser',
+        name: 'register_user',
+        meta: {
+          icon: 'md-apps',
+          title: '登记用户'
+        },
+        component: () => import('@/views/register/registerUser.vue')
+      },
+      {
+        path: 'registerModel',
+        name: 'register_model',
+        meta: {
+          icon: 'md-apps',
+          title: '弹窗'
+        },
+        component: () => import('@/views/register/modules/registerModel.vue')
+      },
+      {
+        path: 'success',
+        name: 'success_modal',
+        meta: {
+          icon: 'md-apps',
+          title: '开通成功'
+        },
+        component: () => import('@/views/register/modules/successModal.vue')
+      },
+      {
+        path: 'used',
+        name: 'used_modal',
+        meta: {
+          icon: 'md-apps',
+          title: '手机号码被占用'
+        },
+        component: () => import('@/views/register/modules/usedModal.vue')
+      },
+      {
+        path: 'different',
+        name: 'different_modal',
+        meta: {
+          icon: 'md-apps',
+          title: '购车手机号不一致'
+        },
+        component: () => import('@/views/register/modules/differentModal.vue')
+      },
+      {
+        path: 'idCardDiff',
+        name: 'idCardDiff_modal',
+        meta: {
+          icon: 'md-apps',
+          title: '购车手机号不一致二'
+        },
+        component: () => import('@/views/register/modules/idCardDiffModal.vue')
+      },
     ]
   },
   {
@@ -35,55 +121,18 @@ export default [
     name: 'app',
     component: Main,
     meta: {
-      title: '应用管理',
+      title: '用户档案',
       icon: 'md-apps'
     },
     children: [
       {
-        path: 'list',
-        name: 'app_list',
+        path: 'user',
+        name: 'user_list',
         meta: {
           icon: 'md-apps',
-          title: '应用管理'
+          title: '用户档案'
         },
-        component: () => import('@/views/app/appList.vue')
-      },
-      {
-        path: 'new_dilink',
-        name: 'new_dilink',
-        meta: {
-          icon: 'md-add',
-          title: '新建Dilink应用'
-        },
-        component: () => import('@/views/app/editDilinkApp.vue')
-      },
-      {
-        path: 'new_phone',
-        name: 'new_phone',
-        meta: {
-          icon: 'md-add',
-          title: '新建手机应用',
-          hideInMenu: true
-        },
-        component: () => import('@/views/app/editPhoneApp.vue')
-      },
-      {
-        path: 'examine',
-        name: 'examine_list',
-        meta: {
-          icon: 'md-checkbox-outline',
-          title: '应用审核管理'
-        },
-        component: () => import('@/views/app/examine.vue')
-      },
-      {
-        path: 'invalid',
-        name: 'invalid_list',
-        meta: {
-          icon: 'md-close-circle',
-          title: '应用失效管理'
-        },
-        component: () => import('@/views/app/invalid.vue')
+        component: () => import('@/views/app/userList.vue')
       }
     ]
   },
@@ -92,123 +141,96 @@ export default [
     name: 'terminal',
     component: Main,
     meta: {
-      title: '终端管理',
-      icon: 'md-desktop'
+      title: '激活码',
+      icon: 'md-desktop',
     },
     children: [
       {
-        path: 'list',
-        name: 'list',
+        path: 'terminal',
+        name: 'terminal',
         meta: {
           icon: 'md-desktop',
-          title: '终端管理'
+          title: '激活码'
         },
         component: () => import('@/views/terminal/terminal.vue')
-      },
-      {
-        path: 'example',
-        name: 'example',
-        meta: {
-          icon: 'md-filing',
-          title: '应用实例管理'
-        },
-        component: () => import('@/views/terminal/example.vue')
       }
     ]
   },
-  {
-    path: '/send',
-    name: 'send',
-    component: Main,
-    meta: {
-      title: '推送任务管理',
-      icon: 'md-paper-plane'
-    },
-    children: [
-      {
-        path: 'task',
-        name: 'task_list',
-        meta: {
-          icon: 'md-clipboard',
-          title: '任务管理'
-        },
-        component: () => import('@/views/send/taskList.vue')
-      },
-      {
-        path: 'timing',
-        name: 'timing_list',
-        meta: {
-          icon: 'md-time',
-          title: '定时任务管理'
-        },
-        component: () => import('@/views/send/timingList.vue')
-      },
-      {
-        path: 'DSystem',
-        name: 'new_DSystem',
-        meta: {
-          icon: 'md-add',
-          title: '新建Dilink系统推送'
-        },
-        component: () => import('@/views/send/editDiLinkSystem.vue')
-      },
-      {
-        path: 'DApp',
-        name: 'new_DApp',
-        meta: {
-          icon: 'md-add',
-          title: '新建Dilink应用推送'
-        },
-        component: () => import('@/views/send/editDiLinkApp.vue')
-      },
-      {
-        path: 'PApp',
-        name: 'new_PApp',
-        meta: {
-          icon: 'md-add',
-          title: '新建手机应用推送'
-        },
-        component: () => import('@/views/send/editPhoneApp.vue')
-      }
-    ]
-  },
-  {
-    path: '/password',
-    name: 'password',
-    meta: {
-      hideInBread: true
-    },
-    component: Main,
-    children: [
-      {
-        path: 'edit',
-        name: 'edit',
-        meta: {
-          icon: 'ios-navigate',
-          title: '修改密码',
-          hideInMenu: true
-        },
-        component: () => import('@/views/login/password.vue')
-      }
-    ]
-  },
-  {
-    path: '/directive',
-    name: 'directive',
-    meta: {
-      hideInBread: true
-    },
-    component: Main,
-    children: [
-      {
-        path: 'directive_page',
-        name: 'directive_page',
-        meta: {
-          icon: 'ios-navigate',
-          title: '指令'
-        },
-        component: () => import('@/views/directive/directive.vue')
-      }
-    ]
-  }
+  // {
+  //   path: '/send',
+  //   name: 'send',
+  //   component: Main,
+  //   meta: {
+  //     title: '推送任务管理',
+  //     icon: 'md-paper-plane'
+  //   },
+  //   children: [
+  //     {
+  //       path: 'task',
+  //       name: 'task_list',
+  //       meta: {
+  //         icon: 'md-clipboard',
+  //         title: '任务管理'
+  //       },
+  //       component: () => import('@/views/send/taskList.vue')
+  //     },
+  //     {
+  //       path: 'timing',
+  //       name: 'timing_list',
+  //       meta: {
+  //         icon: 'md-time',
+  //         title: '定时任务管理'
+  //       },
+  //       component: () => import('@/views/send/timingList.vue')
+  //     },
+  //     {
+  //       path: 'DSystem',
+  //       name: 'new_DSystem',
+  //       meta: {
+  //         icon: 'md-add',
+  //         title: '新建Dilink系统推送'
+  //       },
+  //       component: () => import('@/views/send/editDiLinkSystem.vue')
+  //     },
+  //     {
+  //       path: 'DApp',
+  //       name: 'new_DApp',
+  //       meta: {
+  //         icon: 'md-add',
+  //         title: '新建Dilink应用推送'
+  //       },
+  //       component: () => import('@/views/send/editDiLinkApp.vue')
+  //     },
+  //     {
+  //       path: 'PApp',
+  //       name: 'new_PApp',
+  //       meta: {
+  //         icon: 'md-add',
+  //         title: '新建手机应用推送'
+  //       },
+  //       component: () => import('@/views/send/editPhoneApp.vue')
+  //     }
+  //   ]
+  // },
+  // {
+  //   path: '/password',
+  //   name: 'password',
+  //   meta: {
+  //     hideInBread: true
+  //   },
+  //   component: Main,
+  //   children: [
+  //     {
+  //       path: 'edit',
+  //       name: 'edit',
+  //       meta: {
+  //         icon: 'ios-navigate',
+  //         title: '修改密码',
+  //         hideInMenu: true
+  //       },
+  //       component: () => import('@/views/login/password.vue')
+  //     }
+  //   ]
+  // },
+
 ]
