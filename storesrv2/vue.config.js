@@ -1,20 +1,18 @@
 /**
  * 该文件是用来配置开发环境和生产环境的配置参数
  * */
-
-const path = require('path') // node的path模块，是用来统一路径
+const path = require('path')
 
 const resolve = dir => {
   return path.join(__dirname, dir)
 }
 
 const BASE_URL = process.env.NODE_ENV === 'production'
-  ? './'
+  ? '/'
   : '/'
 
-module.default = {
-
-  baseUrl: BASE_URL,
+module.exports = {
+  publicPath: BASE_URL,
   lintOnSave: true,
   chainWebpack: config => {
     config.resolve.alias

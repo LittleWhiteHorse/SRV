@@ -4,22 +4,26 @@
 <template>
   <div class="layout">
     <Layout style="height: 100vh;">
-      <Header>
-        <div class="layout-logo"></div>
+      <Header :style="{ background: '#fff'}">
+        <div class="layout-logo">4S店服务系统</div>
         <div class="layout-nav">
-          <user></user>
+          <user :user-name="userName"></user>
         </div>
       </Header>
       <Layout>
-        <Sider ref="side1" hide-trigger collapsible :collapsed-width="78" v-model="isCollapsed">
-          <div style="height: 64px; margin: 10px; border: 2px dashed #ffffff; border-radius: 10px"></div>
+        <Sider :style="{ background: '#fff'}" ref="side1" hide-trigger collapsible :collapsed-width="78" v-model="isCollapsed">
+          <div style="text-align: center; margin: 10px 0;">
+            <registered-user></registered-user>
+          </div>
           <!--导航菜单-->
           <side-menu ref="sideMenu" :menu-list="menuList" :active-name="$route.name" @on-select="turnToPage"></side-menu>
         </Sider>
         <Content class="main-content">
           <Layout>
             <div class="tag-nav-wrapper">
-              <tags-nav :routeCur="$route" @clickTag="handleClick" :list="tagsNavList" @on-close="handleCLoseTag"></tags-nav>
+              <div class="tag-nav-wrapper-background">
+                <tags-nav :routeCur="$route" @clickTag="handleClick" :list="tagsNavList" @on-close="handleCLoseTag"></tags-nav>
+              </div>
             </div>
             <Content style="overflow: auto;">
               <keep-alive>
@@ -36,6 +40,7 @@
 import sideMenu from './components/side-menu/side-menu.vue'
 import User from './components/user'
 import TagsNav from './components/tags-nav'
+import registeredUser from './components/registered-user'
 import routers from '@/router/routers'
 import { mapMutations } from 'vuex'
 import { equalRoute } from '@/libs/utils'
@@ -44,7 +49,8 @@ export default {
   components: {
     sideMenu,
     User,
-    TagsNav
+    TagsNav,
+    registeredUser
   },
   data () {
     return {
@@ -57,6 +63,9 @@ export default {
     },
     tagsNavList () {
       return this.$store.state.app.tagsNavList
+    },
+    userName () {
+      return this.$store.state.user.userName
     }
   },
   watch: {
@@ -85,7 +94,7 @@ export default {
     handleCLoseTag (res, type, route) {
       if (type !== 'other') {
         if (type === 'all') {
-          this.turnToPage({ name: 'home' })
+          this.turnToPage({ name: this.$config.homeName })
         } else {
           if (equalRoute(this.$route, route)) {
             this.closeTag(route)
@@ -121,7 +130,7 @@ export default {
     })
     if (!this.tagsNavList.find(item => item.name === this.$route.name)) {
       this.$router.push({
-        name: 'home'
+        name: this.$config.homeName
       })
     }
   }

@@ -1,4 +1,6 @@
+import Cookies from 'js-cookie'
 import { objEqual } from './tools'
+import config from '@/config'
 
 /**
  * @param {Array} list 通过路由列表得到菜单列表
@@ -115,4 +117,20 @@ export const getHomeRoute = (list) => {
     }
   }
   return homeRoute
+}
+
+/**
+ * @description 存储token
+ **/
+export const setToken = (token) => {
+  Cookies.set('TOKEN_KEY', token, { expires: config.cookieExpires || 1 })
+}
+
+/**
+ * @description 获取token
+ **/
+export const getToken = () => {
+  const token = Cookies.get('TOKEN_KEY')
+  if (token) return token
+  else return false
 }

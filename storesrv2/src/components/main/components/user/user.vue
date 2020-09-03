@@ -5,7 +5,7 @@
   <div>
     <Dropdown @on-click="handleClick">
       <a href="javascript:void(0)">
-        用户名
+        {{userName}}
         <Icon type="ios-arrow-down"></Icon>
       </a>
       <DropdownMenu slot="list">
@@ -16,15 +16,25 @@
   </div>
 </template>
 <script>
+import { mapActions } from 'vuex'
 export default {
   name: 'User',
+  props: {
+    userName: String
+  },
   data () {
     return {}
   },
   methods: {
+    ...mapActions([
+      'handleLogout'
+    ]),
     logout () {
-      this.$router.push({
-        name: 'login'
+      this.handleLogout().then(res => {
+        console.log(res)
+        this.$router.push({
+          name: 'login'
+        })
       })
     },
     handleClick (name) {

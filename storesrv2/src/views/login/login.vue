@@ -48,18 +48,35 @@ export default {
   },
   methods: {
     ...mapActions([
-      'handleLogin'
+      'handleLogin',
+      'getStoreInfo'
     ]),
     handleSubmit () {
       this.$refs.formInline.validate((valid) => {
         console.log(this.formInline.user)
         console.log(this.formInline.password)
         this.handleLogin({ username: this.formInline.user, password: this.formInline.password }).then(res => {
-          this.getUserInfo().then(res => {
-            this.$router.push({
-              name: this.$config.homeName
+          console.log(res)
+          if (res.data.code == 0) {
+            this.getStoreInfo().then(res => {
+              if (JSON.parse(res.data).code === '1') {
+                this.$router.push({
+                  name: this.$config.homeName
+                })
+              } else {
+                this.$Message.warning(res.data.message)
+              }
             })
-          })
+          } else if (res.data.code == 3) {
+            this.$Message.warning(res.data.message)
+            this.$router.push({
+              name: 'login'
+            })
+          } else if (res.data.code == 1) {
+            this.$Message.error(res.data.message)
+          } else {
+            this.$Message.warning(res.data.message)
+          }
         })
       })
     }

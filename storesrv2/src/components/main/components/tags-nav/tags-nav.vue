@@ -26,7 +26,7 @@
           v-for="(item, index) in list"
           type="dot"
           :data-route-item="item"
-          :closable="item.name !== 'home'"
+          :closable="item.name !== $config.homeName"
           :color="isCurTag(item) ? 'primary' : 'default'"
           :key="`tag-nav-${index}`"
           :name="item.name"
@@ -80,10 +80,10 @@ export default {
     handleTagsClose (type) {
       if (type === 'all') {
         console.log(this.$config)
-        let res = this.list.filter(item => item.name === 'home')
+        let res = this.list.filter(item => item.name === this.$config.homeName)
         this.$emit('on-close', res, type)
       } else if (type === 'other') {
-        let res = this.list.filter(item => equalRoute(item, this.curRouter) || item.name === 'home')
+        let res = this.list.filter(item => equalRoute(item, this.curRouter) || item.name === this.$config.homeName)
         this.$emit('on-close', res, type, this.curRouter)
       }
     },
