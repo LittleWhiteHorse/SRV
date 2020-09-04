@@ -18,7 +18,7 @@ module.exports = {
     'prefer-const': 'off',
     "eqeqeq": 'off',
     "no-multiple-empty-lines": [0, {"max": 100}],
-    "no-undef": 1
+    "no-undef": 0
   },
   overrides: [
     {

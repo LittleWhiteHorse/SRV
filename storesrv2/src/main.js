@@ -8,11 +8,15 @@ import 'view-design/dist/styles/iview.css'
 
 Vue.use(ViewUI)
 
+
 Vue.config.productionTip = false
+/**
+ * @description 全局注册应用配置
+ */
+Vue.prototype.$config = config
 
 new Vue({
   router,
   store,
-  config,
   render: h => h(App)
 }).$mount('#app')

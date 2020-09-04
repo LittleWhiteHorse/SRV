@@ -6,14 +6,21 @@
   overflow: hidden;
 }
 .layout-logo{
-  width: 100px;
+  width: 200px;
   height: 30px;
-  background: #5b6270;
+  line-height: 30px;
+  color: #3e3e3e;
+  font-weight: bold;
+  font-size: 20px;
   border-radius: 3px;
   float: left;
   position: relative;
   top: 15px;
-  left: 20px;
+  left: 0px;
+}
+
+.ivu-layout-header {
+  background-color: #fff;
 }
 
 .layout-nav{
@@ -23,11 +30,25 @@
 
 .main-content {
   height: 100vh;
-  overflow: hidden;
+  /*overflow: hidden;*/
+  background-color: #eff1f4;
+  padding: 10px;
+}
+
+.content-wrapper{
+  padding: 18px;
+  height: 100vh;
+  overflow: auto;
 }
 
 .tag-nav-wrapper{
   padding: 0;
-  height:40px;
+  height:60px;
+  background:#fff;
+  padding: 10px;
+}
+
+.tag-nav-wrapper-background {
   background:#F0F0F0;
+  height: 40px;
 }
