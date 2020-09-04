@@ -1,5 +1,12 @@
 import { login, getAfterUserInfo, logout } from '@/api/user'
 import { setToken, getToken } from '@/libs/utils'
+import Cookies from 'js-cookie'
+import axios from 'axios'
+
+console.log(axios.defaults)
+const token = Cookies.get('TOKEN_KEY')
+axios.defaults.headers.common['Token'] = token
+
 export default {
   state: {
     /**
@@ -39,7 +46,9 @@ export default {
           password
         })).then(res => {
           const data = res.data
-          commit('setToken', data.message)
+          if (res.data.code == 0) {
+            commit('setToken', data.message)
+          }
           resolve(res)
         }).catch(err => {
           reject(err)
