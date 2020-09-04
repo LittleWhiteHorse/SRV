@@ -51,25 +51,25 @@
 </template>
 
 <script type='es6'>
-  import { jiekou } from '@/api'
-  export default {
-    name: 'app',
-    components: {
+//  import { jiekou } from '@/api'
+export default {
+  name: 'app',
+  components: {
 //        DetailListItem,
 //        DetailList
-    },
-    data() {
-      return {
-        detailList: {}
-      }
-    },
-    methods: {
+  },
+  data () {
+    return {
+      detailList: {}
+    }
+  },
+  methods: {
 //        getList(){
 //            let params = { vin: this.vin}
 //            jiekou(params).then(res => {
 //                this.detailList = res.result
 //            })
 //        }
-    }
   }
+}
 </script>

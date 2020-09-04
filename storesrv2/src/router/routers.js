@@ -13,43 +13,9 @@ export default [
   {
     path: '/',
     name: 'Home',
-    redirect: '/home',
+    redirect: 'user_list',
     component: Main,
-    meta: {
-      title: '首页'
-    },
-    children: [
-      {
-        path: '/home',
-        name: 'home',
-        meta: {
-          title: '首页',
-          hideInMenu: true
-        },
-        component: () => import('@/views/app/userList.vue')
-      }
-    ]
   },
-  // {
-  //   path: '/app',
-  //   name: 'app',
-  //   // component: Main,
-  //   meta: {
-  //     title: '登记用户',
-  //     icon: 'md-apps'
-  //   },
-  //   children: [
-  //     {
-  //       path: 'registerUser',
-  //       name: 'register_user',
-  //       meta: {
-  //         icon: 'md-apps',
-  //         title: '登记用户'
-  //       },
-  //       component: () => import('@/views/app/registerUser.vue')
-  //     }
-  //   ]
-  // },
   {
     path: '/register',
     name: 'register',
@@ -113,7 +79,7 @@ export default [
           title: '购车手机号不一致二'
         },
         component: () => import('@/views/register/modules/idCardDiffModal.vue')
-      },
+      }
     ]
   },
   {
@@ -132,7 +98,17 @@ export default [
           icon: 'md-apps',
           title: '用户档案'
         },
-        component: () => import('@/views/app/userList.vue')
+        component: () => import('@/views/user-profile/userList.vue')
+      },
+      {
+        path: '/details/:id',
+        name: 'user_details',
+        meta: {
+          icon: 'md-apps',
+          title: '查看档案',
+          hideInMenu: true
+        },
+        component: () => import('@/views/user-profile/userModel.vue')
       }
     ]
   },
@@ -142,7 +118,7 @@ export default [
     component: Main,
     meta: {
       title: '激活码',
-      icon: 'md-desktop',
+      icon: 'md-desktop'
     },
     children: [
       {
@@ -155,82 +131,5 @@ export default [
         component: () => import('@/views/terminal/terminal.vue')
       }
     ]
-  },
-  // {
-  //   path: '/send',
-  //   name: 'send',
-  //   component: Main,
-  //   meta: {
-  //     title: '推送任务管理',
-  //     icon: 'md-paper-plane'
-  //   },
-  //   children: [
-  //     {
-  //       path: 'task',
-  //       name: 'task_list',
-  //       meta: {
-  //         icon: 'md-clipboard',
-  //         title: '任务管理'
-  //       },
-  //       component: () => import('@/views/send/taskList.vue')
-  //     },
-  //     {
-  //       path: 'timing',
-  //       name: 'timing_list',
-  //       meta: {
-  //         icon: 'md-time',
-  //         title: '定时任务管理'
-  //       },
-  //       component: () => import('@/views/send/timingList.vue')
-  //     },
-  //     {
-  //       path: 'DSystem',
-  //       name: 'new_DSystem',
-  //       meta: {
-  //         icon: 'md-add',
-  //         title: '新建Dilink系统推送'
-  //       },
-  //       component: () => import('@/views/send/editDiLinkSystem.vue')
-  //     },
-  //     {
-  //       path: 'DApp',
-  //       name: 'new_DApp',
-  //       meta: {
-  //         icon: 'md-add',
-  //         title: '新建Dilink应用推送'
-  //       },
-  //       component: () => import('@/views/send/editDiLinkApp.vue')
-  //     },
-  //     {
-  //       path: 'PApp',
-  //       name: 'new_PApp',
-  //       meta: {
-  //         icon: 'md-add',
-  //         title: '新建手机应用推送'
-  //       },
-  //       component: () => import('@/views/send/editPhoneApp.vue')
-  //     }
-  //   ]
-  // },
-  // {
-  //   path: '/password',
-  //   name: 'password',
-  //   meta: {
-  //     hideInBread: true
-  //   },
-  //   component: Main,
-  //   children: [
-  //     {
-  //       path: 'edit',
-  //       name: 'edit',
-  //       meta: {
-  //         icon: 'ios-navigate',
-  //         title: '修改密码',
-  //         hideInMenu: true
-  //       },
-  //       component: () => import('@/views/login/password.vue')
-  //     }
-  //   ]
-  // },
-
+  }
 ]

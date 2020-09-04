@@ -103,10 +103,10 @@
 </template>
 
 <script type='es6'>
-import { regUser } from '@/api/user'
+import { regUser } from '@/api/data'
 export default {
   name: 'app',
-  data() {
+  data () {
     return {
       formItem: {},
       vin: ''
@@ -114,15 +114,15 @@ export default {
   },
   methods: {
     // 查询接口
-    searchBtn(){
+    searchBtn () {
       this.$refs.formInline.validate((valid) => {
         regUser({}).then(res => {
 
         })
       })
     },
-//    提交接口
-    addList(){
+    // 提交接口
+    addList () {
 
     }
   }

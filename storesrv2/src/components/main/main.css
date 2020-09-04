@@ -30,9 +30,15 @@
 
 .main-content {
   height: 100vh;
-  overflow: hidden;
+  /*overflow: hidden;*/
   background-color: #eff1f4;
   padding: 10px;
+}
+
+.content-wrapper{
+  padding: 18px;
+  height: 100vh;
+  overflow: auto;
 }
 
 .tag-nav-wrapper{

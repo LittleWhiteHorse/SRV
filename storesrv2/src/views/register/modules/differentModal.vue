@@ -22,21 +22,21 @@
 </template>
 
 <script type='es6'>
-  export default {
-    name: 'app',
-    data() {
-      return {
-        regmodel: true,
-        titleval: '购车手机号和迪粉汇账号不一致',
-        phone: '122556555565656',
-        type: '汉DM',
-        footbatn: '尾部'
-      }
-    },
-    methods: {
-      show(){
-        this.regmodel = true
-      }
+export default {
+  name: 'app',
+  data () {
+    return {
+      regmodel: true,
+      titleval: '购车手机号和迪粉汇账号不一致',
+      phone: '122556555565656',
+      type: '汉DM',
+      footbatn: '尾部'
+    }
+  },
+  methods: {
+    show () {
+      this.regmodel = true
     }
   }
+}
 </script>

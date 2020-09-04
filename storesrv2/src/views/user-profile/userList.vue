@@ -32,8 +32,8 @@
       :data="dataSource"
       :loading="loading"
     >
-      <div slot-scope="{ row, index }" slot="action">
-        <Button type="primary" size="small" style="margin-right: 5px;color: deepskyblue;background-color: #95fffd" @click="show(index)">查看</Button>
+      <div slot-scope="{ row }" slot="action">
+        <Button type="primary" size="small" style="margin-right: 5px;color: deepskyblue;background-color: #95fffd" @click="handleShow(row)">查看</Button>
       </div>
     </Table>
     <!--分页-->
@@ -41,12 +41,11 @@
   </Card>
 </template>
 
-<script type='es6'>
-//import { userList } from '@/api/api'
-import { getUserInfoPageInfo } from '@/api/user'
+<script>
+import { getUserInfoPageInfo } from '@/api/data'
 export default {
   name: 'app',
-  data() {
+  data () {
     return {
       formItem: {
         user: '',
@@ -57,58 +56,62 @@ export default {
       columns: [
         {
           title: '序号',
-          key: '',
+          type: 'index',
           align: 'center'
         },
         {
           title: '登记日期',
-          key: '',
+          key: 'autoRegistDate',
           align: 'center'
         },
         {
           title: '客户姓名',
-          key: '',
+          key: 'userName',
           align: 'center'
         },
         {
           title: '手机号码',
-          key: '',
+          key: 'phone',
           align: 'center'
         },
         {
           title: '车牌号',
-          key: '',
+          key: 'autoPlate',
           align: 'center'
         },
         {
           title: '车型',
-          key: '',
+          key: 'modelName',
           align: 'center'
         },
         {
           title: '操作',
           align: 'center',
-          slot: 'action',
+          slot: 'action'
         }
       ],
       loading: false,
-      pagetotal: 100
+      page: 1,
+      size: 10,
+      pagetotal: 0
     }
   },
   mounted () {
     this.getList()
   },
   methods: {
-    getList() {
+    getList () {
       let params = {
-        pageIndex: 1,
-        pageSize: 10,
+        pageIndex: this.page,
+        pageSize: this.size,
         username: '',
         autoPlate: '',
         regDate: ''
       }
       getUserInfoPageInfo(params).then(res => {
-        this.dataSource = res.result
+        const data = res.data
+        this.dataSource = data.list
+        this.pagetotal = data.total
       })
     }
   }

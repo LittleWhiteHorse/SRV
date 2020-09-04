@@ -3,7 +3,7 @@
 </style>
 <template>
   <div>
-    <Dropdown @on-click="handleClick">
+    <Dropdown @on-click="handleClick" placement="bottom-end">
       <a href="javascript:void(0)">
         {{userName}}
         <Icon type="ios-arrow-down"></Icon>

@@ -23,21 +23,21 @@
 </template>
 
 <script type='es6'>
-  export default {
-    name: 'app',
-    data() {
-      return {
-        regmodel: true,
-        titleval: '手机号码被占用',
-        vin: '122556555565656',
-        type: '汉DM',
-        footbatn: '尾部'
-      }
-    },
-    methods: {
-      show(){
-        this.regmodel = true
-      }
+export default {
+  name: 'app',
+  data () {
+    return {
+      regmodel: true,
+      titleval: '手机号码被占用',
+      vin: '122556555565656',
+      type: '汉DM',
+      footbatn: '尾部'
+    }
+  },
+  methods: {
+    show () {
+      this.regmodel = true
     }
   }
+}
 </script>

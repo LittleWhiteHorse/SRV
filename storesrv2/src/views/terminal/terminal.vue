@@ -20,10 +20,10 @@
 </template>
 
 <script type='es6'>
-import { getCdkInfoPageInfo } from '@/api/user'
+import { getCdkInfoPageInfo } from '@/api/data'
 export default {
   name: 'app',
-  data() {
+  data () {
     return {
       dataSource: [],
       columns: [
@@ -55,27 +55,27 @@ export default {
           title: '操作/使用时间',
           key: 'usingTime',
           align: 'center',
-          slot: 'action',
+          slot: 'action'
         }
       ],
       loading: false,
       pagetotal: 100
     }
   },
-  mounted(){
+  mounted () {
     this.getList()
   },
   methods: {
-    getList(){
+    getList () {
       let params = {
         pageIndex: 1,
-        pageSize: 10,
+        pageSize: 10
       }
-      getCdkInfoPageInfo(params).then(res =>{
+      getCdkInfoPageInfo(params).then(res => {
         this.dataSource = res
-      } )
+      })
     },
-    show(index){
+    show (index) {
 
     }
   }

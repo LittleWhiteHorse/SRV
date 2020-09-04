@@ -25,7 +25,7 @@
                 <tags-nav :routeCur="$route" @clickTag="handleClick" :list="tagsNavList" @on-close="handleCLoseTag"></tags-nav>
               </div>
             </div>
-            <Content style="overflow: auto;">
+            <Content class="content-wrapper">
               <keep-alive>
                 <router-view/>
               </keep-alive>
