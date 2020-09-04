@@ -3,8 +3,8 @@ import { setToken, getToken } from '@/libs/utils'
 import Cookies from 'js-cookie'
 import axios from 'axios'
 
-console.log(axios.defaults)
 const token = Cookies.get('TOKEN_KEY')
+console.log('token last', token)
 axios.defaults.headers.common['Token'] = token
 
 export default {
@@ -14,7 +14,8 @@ export default {
      **/
     token: getToken(),
     userName: '',
-    access: []
+    access: [],
+    hasGetInfo: false
   },
   getters: {
     /**
@@ -31,7 +32,10 @@ export default {
     },
     setUserName (state, username) {
       state.userName = username
-    }
+    },
+    setHasGetInfo (state, status) {
+      state.hasGetInfo = status
+    },
   },
   actions: {
     /**
@@ -50,6 +54,7 @@ export default {
           if (res.data.code == 0) {
             commit('setToken', data.message)
             axios.defaults.headers.common['Token'] = data.message
+            commit('setHasGetInfo', true)
           }
           resolve(res)
         }).catch(err => {
@@ -73,7 +78,7 @@ export default {
     getStoreInfo ({ state, commit }) {
       return new Promise((resolve, reject) => {
         getAfterUserInfo().then(res => {
-          const data = JSON.parse(res.data)
+          const data = res.data
           commit('setUserName', data.respondData)
           resolve(res)
         }).catch(err => {
