@@ -12,9 +12,9 @@ const BASE_URL = process.env.NODE_ENV === 'production'
   ? './'
   : '/'
 
-module.default = {
+module.exports = {
 
-  baseUrl: BASE_URL,
+  publicPath: BASE_URL,
   lintOnSave: true,
   chainWebpack: config => {
     config.resolve.alias
