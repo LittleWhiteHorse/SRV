@@ -32,7 +32,7 @@ export default {
   data () {
     return {
       formInline: {
-        user: '',
+        user: 'QI.CHAOCHAO@BYD.COM',
         password: ''
       },
       ruleInline: {
@@ -58,14 +58,8 @@ export default {
         this.handleLogin({ username: this.formInline.user, password: this.formInline.password }).then(res => {
           console.log(res)
           if (res.data.code == 0) {
-            this.getStoreInfo().then(res => {
-              if (JSON.parse(res.data).code === '1') {
-                this.$router.push({
-                  name: this.$config.homeName
-                })
-              } else {
-                this.$Message.warning(res.data.message)
-              }
+            this.$router.push({
+              name: this.$config.homeName
             })
           } else if (res.data.code == 3) {
             this.$Message.warning(res.data.message)

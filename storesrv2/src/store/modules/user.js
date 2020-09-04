@@ -13,7 +13,8 @@ export default {
      * 保存数据
      **/
     token: getToken(),
-    userName: ''
+    userName: '',
+    access: []
   },
   getters: {
     /**
@@ -48,6 +49,7 @@ export default {
           const data = res.data
           if (res.data.code == 0) {
             commit('setToken', data.message)
+            axios.defaults.headers.common['Token'] = data.message
           }
           resolve(res)
         }).catch(err => {

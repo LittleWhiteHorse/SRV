@@ -3,7 +3,7 @@ import Main from '@/components/main/main'
 
 export default [
   {
-    path: '/',
+    path: '/login',
     name: 'login',
     meta: {
       title: '登录'
