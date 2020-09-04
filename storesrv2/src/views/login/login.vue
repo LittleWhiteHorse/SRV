@@ -1,28 +1,21 @@
 <template>
   <div class="loginBackground">
-    <div>
-      <Card class="loginBox">
-        <div>
-          <Form :model="formInline" :rules="ruleInline" ref="formInline">
-            <FormItem prop="user">
-              <!-- 账号输入框 -->
-              <Input type="text" v-model="formInline.user" placeholder="请输入用户名...">
-                <Icon type="md-person" :size="18" slot="prepend"></Icon>
-              </Input>
-            </FormItem>
-            <FormItem prop="password">
-              <!-- 密码输入框 -->
-              <Input type="password" v-model="formInline.password" placeholder="请输入密码...">
-                <Icon type="md-lock" :size="18" slot="prepend"></Icon>
-              </Input>
-            </FormItem>
-            <FormItem>
-              <Button type="primary" @click="handleSubmit" long>登 录</Button>
-            </FormItem>
-          </Form>
-        </div>
-      </Card>
-    </div>
+    <Card class="loginBox">
+      <h2>欢迎登陆4S店服务系统</h2>
+      <Form :model="formInline" :rules="ruleInline" ref="formInline">
+        <FormItem prop="user">
+          <!-- 账号输入框 -->
+          <Input type="text" v-model="formInline.user" placeholder="请输入用户名..."/>
+        </FormItem>
+        <FormItem prop="password">
+          <!-- 密码输入框 -->
+          <Input type="password" v-model="formInline.password" placeholder="请输入密码..." />
+        </FormItem>
+        <FormItem>
+          <Button type="primary" @click="handleSubmit" long>登 录</Button>
+        </FormItem>
+      </Form>
+    </Card>
   </div>
 </template>
 <script>
@@ -53,20 +46,18 @@ export default {
     ]),
     handleSubmit () {
       this.$refs.formInline.validate((valid) => {
-        console.log(this.formInline.user)
-        console.log(this.formInline.password)
+        if (!valid) return
         this.handleLogin({ username: this.formInline.user, password: this.formInline.password }).then(res => {
-          console.log(res)
-          if (res.data.code == 0) {
+          if (res.data.code === 0) {
             this.$router.push({
               name: this.$config.homeName
             })
-          } else if (res.data.code == 3) {
+          } else if (res.data.code === 3) {
             this.$Message.warning(res.data.message)
             this.$router.push({
               name: 'login'
             })
-          } else if (res.data.code == 1) {
+          } else if (res.data.code === 1) {
             this.$Message.error(res.data.message)
           } else {
             this.$Message.warning(res.data.message)

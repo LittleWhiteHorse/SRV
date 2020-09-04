@@ -1,13 +1,20 @@
 .loginBackground {
-  background: #08132B;
   height: 100vh;
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
+   background: url("../../assets/bg.jpg") no-repeat;
+   background-size: cover;
 }
 
-.loginBox {
-  padding: 5vw 3vw 1vw 3vw;
-  width: 30vw;
-  text-align: center;
+.loginBox.ivu-card {
+   width: 670px;
+   box-sizing: border-box;
+   margin-right: 6.25vw;
+   padding: 40px 110px 0  110px;
+   border-radius: 10px;
 }
+.loginBox h2 { font-size: 32px; color: #3e3e3e; text-align: center; margin-bottom: 35px;}
+.loginBox .ivu-input { height: 50px; padding: 8px 20px; font-size: 18px;}
+.loginBox .ivu-form-item { margin-bottom: 44px;}
+.loginBox .ivu-btn-primary { height: 50px; background-color: #1d579f;  font-size: 18px;}

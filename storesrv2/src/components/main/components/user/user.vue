@@ -2,18 +2,16 @@
 
 </style>
 <template>
-  <div>
-    <Dropdown @on-click="handleClick" placement="bottom-end">
-      <a href="javascript:void(0)">
-        {{userName}}
-        <Icon type="ios-arrow-down"></Icon>
-      </a>
-      <DropdownMenu slot="list">
-        <DropdownItem name="password">修改密码</DropdownItem>
-        <DropdownItem name="logout">退 出</DropdownItem>
-      </DropdownMenu>
-    </Dropdown>
-  </div>
+<Dropdown @on-click="handleClick" placement="bottom-end">
+  <a href="javascript:void(0)" style="color: #ffffff">
+    {{userName}}
+    <Icon type="md-arrow-dropdown" />
+  </a>
+  <DropdownMenu slot="list">
+    <DropdownItem name="password">修改密码</DropdownItem>
+    <DropdownItem name="logout">退 出</DropdownItem>
+  </DropdownMenu>
+</Dropdown>
 </template>
 <script>
 import { mapActions } from 'vuex'

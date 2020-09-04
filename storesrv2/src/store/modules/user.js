@@ -54,7 +54,6 @@ export default {
           if (res.data.code == 0) {
             commit('setToken', data.message)
             axios.defaults.headers.common['Token'] = data.message
-            commit('setHasGetInfo', true)
           }
           resolve(res)
         }).catch(err => {
@@ -80,6 +79,7 @@ export default {
         getAfterUserInfo().then(res => {
           const data = res.data
           commit('setUserName', data.respondData)
+          commit('setHasGetInfo', true)
           resolve(res)
         }).catch(err => {
           reject(err)

@@ -4,7 +4,7 @@
 <template>
   <div class="layout">
     <Layout style="height: 100vh;">
-      <Header :style="{ background: '#fff'}">
+      <Header class="ivu-layout-header">
         <div class="layout-logo">4S店服务系统</div>
         <div class="layout-nav">
           <user :user-name="userName"></user>
