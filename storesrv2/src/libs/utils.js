@@ -1,5 +1,5 @@
 import Cookies from 'js-cookie'
-import { objEqual } from './tools'
+import { objEqual, hasOneOf } from './tools'
 import config from '@/config'
 
 /**
@@ -155,6 +155,7 @@ export const canTurnTo = (name, access, routes) => {
   const routePermissionJudge = (list) => {
     return list.some(item => {
       if (item.children && item.children.length) {
+        console.log(item)
         return routePermissionJudge(item.children)
       } else if (item.name === name) {
         return hasAccess(access, item)

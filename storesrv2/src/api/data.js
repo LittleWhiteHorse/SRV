@@ -17,10 +17,10 @@ export const getCdkInfoPageInfo = (data) => {
   })
 }
 
-// 开通云服务  登记用户
-export const regUser = (data) => {
+// 根据VIN和证件号获取销服数据
+export const getDmsInfo = (data) => {
   return axios.request({
-    url: '/to4sservice/regUser',
+    url: '/to4sservice/getDmsInfo',
     method: 'post',
     data
   })

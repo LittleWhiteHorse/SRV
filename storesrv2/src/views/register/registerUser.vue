@@ -103,7 +103,7 @@
 </template>
 
 <script type='es6'>
-import { regUser } from '@/api/data'
+import { getDmsInfo } from '@/api/data'
 export default {
   name: 'app',
   data () {
@@ -116,7 +116,7 @@ export default {
     // 查询接口
     searchBtn () {
       this.$refs.formInline.validate((valid) => {
-        regUser({}).then(res => {
+        getDmsInfo({vin: '11111', idCard: '2222222222'}).then(res => {
 
         })
       })
