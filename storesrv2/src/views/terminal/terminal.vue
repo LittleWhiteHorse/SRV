@@ -15,7 +15,9 @@
       </div>
     </Table>
     <!--分页-->
-    <Page :total="pagetotal" show-elevator @on-change="pageChange"></Page>
+    <div style="margin-top: 8px; display: flex; justify-content: flex-end;">
+      <Page :total="pagetotal" show-elevator @on-change="pageChange"></Page>
+    </div>
   </Card>
 </template>
 

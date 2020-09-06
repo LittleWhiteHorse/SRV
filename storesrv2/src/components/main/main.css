@@ -61,3 +61,6 @@
    color: #ffffff;
 }
 .main-content .ivu-page-item-active { border-color: #1d579f;}
+.main-content .ivu-input-prefix i, .main-content .ivu-input-suffix i { color: #1d579f;}
+.main-content .ivu-date-picker-cells-focused em { box-shadow: 0 0 0 1px #1d579f inset}
+.main-content .ivu-date-picker-cells-cell-today em:after { background-color: #1d579f;}
