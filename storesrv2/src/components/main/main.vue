@@ -12,19 +12,13 @@
       </Header>
       <Layout>
         <Sider :style="{ background: '#fff'}" ref="side1" hide-trigger collapsible :collapsed-width="78" v-model="isCollapsed">
-          <div style="text-align: center; margin: 10px 0;">
-            <registered-user></registered-user>
-          </div>
+          <registered-user></registered-user>
           <!--导航菜单-->
           <side-menu ref="sideMenu" :menu-list="menuList" :active-name="$route.name" @on-select="turnToPage"></side-menu>
         </Sider>
         <Content class="main-content">
-          <Layout>
-            <div class="tag-nav-wrapper">
-              <div class="tag-nav-wrapper-background">
-                <tags-nav :routeCur="$route" @clickTag="handleClick" :list="tagsNavList" @on-close="handleCLoseTag"></tags-nav>
-              </div>
-            </div>
+          <Layout style="background-color: transparent;">
+            <tags-nav :routeCur="$route" @clickTag="handleClick" :list="tagsNavList" @on-close="handleCLoseTag"></tags-nav>
             <Content class="content-wrapper">
               <keep-alive>
                 <router-view/>

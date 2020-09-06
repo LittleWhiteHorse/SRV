@@ -1,8 +1,4 @@
 <style>
-  .ivu-btn-primary{
-    background-color: darkturquoise;
-    border: darkturquoise;
-  }
   .titlename{
     height: 60px;
     display: flex;
@@ -13,16 +9,16 @@
 
 <template>
   <!--登记用户页面-->
-  <Card :bordered="false" style="background-color: #c3d4d0">
+  <div>
     <!--顶部查询-->
     <div>
       <Card>
-        <Form :model="formItem" inline :label-width="80">
+        <Form :model="formData" inline :label-width="80">
           <FormItem prop="vin" label="车架号">
-            <Input v-model="formItem.vin" placeholder="请输入车架号"/>
+            <Input v-model="formData.vin" placeholder="请输入车架号"/>
           </FormItem>
           <FormItem prop="idCard" label="证件号码">
-            <Input v-model="formItem.idCard" placeholder="请输入证件号码"/>
+            <Input v-model="formData.idCard" placeholder="请输入证件号码"/>
           </FormItem>
           <FormItem>
             <Button type="primary" @click="searchBtn">查询</Button>
@@ -36,21 +32,21 @@
         <H3>客户信息</H3>
       </div>
       <Card>
-        <Form :model="formItem" inline :label-width="100">
+        <Form :model="infoData" inline :label-width="100">
           <FormItem prop="plate" label="客户姓名">
-            <Input v-model="formItem.userName" placeholder="请输入客户姓名"/>
+            <Input v-model="infoData.userName" placeholder="请输入客户姓名"/>
           </FormItem>
           <FormItem prop="date" label="购车手机号">
-            <Input v-model="formItem.phone" placeholder="请输入购车手机号"/>
+            <Input v-model="infoData.phone" placeholder="请输入购车手机号"/>
           </FormItem>
           <FormItem prop="date" label="邮箱">
-            <Input v-model="formItem.email" placeholder="请输入邮箱"/>
+            <Input v-model="infoData.email" placeholder="请输入邮箱"/>
           </FormItem>
           <FormItem prop="date" label="所属区域">
-            <Input v-model="formItem.area" placeholder="请输入所属区域"/>
+            <Input v-model="infoData.area" placeholder="请输入所属区域"/>
           </FormItem>
           <FormItem prop="date" label="客户地址">
-            <Input v-model="formItem.address" placeholder="请输入客户地址"/>
+            <Input v-model="infoData.address" placeholder="请输入客户地址"/>
           </FormItem>
         </Form>
       </Card>
@@ -61,24 +57,24 @@
         <H3>车辆信息</H3>
       </div>
       <Card>
-        <Form :model="formItem" inline :label-width="100">
+        <Form :model="infoData" inline :label-width="100">
           <FormItem prop="plate" label="汽车品牌">
-            <Input v-model="formItem.autoBrand" placeholder="请输入汽车品牌"/>
+            <Input v-model="infoData.autoBrand" placeholder="请输入汽车品牌"/>
           </FormItem>
           <FormItem prop="date" label="车型">
-            <Input v-model="formItem.idCard" placeholder="请输入证件号码"/>
+            <Input v-model="infoData.autoModel" placeholder="请输入证件号码"/>
           </FormItem>
           <FormItem prop="date" label="排量">
-            <Input v-model="formItem.autoDisplacement" placeholder="请输入排量"/>
+            <Input v-model="infoData.autoDisplacement" placeholder="请输入排量"/>
           </FormItem>
           <FormItem prop="date" label="款式">
-            <Input v-model="formItem.autoStyle" placeholder="请输入款式"/>
+            <Input v-model="infoData.autoStyle" placeholder="请输入款式"/>
           </FormItem>
           <FormItem prop="date" label="发动机/电机号">
-            <Input v-model="formItem.engineNo" placeholder="请输入发动机/电机号"/>
+            <Input v-model="infoData.engineNo" placeholder="请输入发动机/电机号"/>
           </FormItem>
           <FormItem prop="date" label="购车日期">
-            <Input v-model="formItem.autoBought" placeholder="请输入购车日期"/>
+            <Input v-model="infoData.autoBought" placeholder="请输入购车日期"/>
           </FormItem>
         </Form>
       </Card>
@@ -89,9 +85,9 @@
         <H3>注册信息</H3>
       </div>
       <Card>
-        <Form :model="formItem" inline :label-width="100">
+        <Form :model="infoData" inline :label-width="100">
           <FormItem prop="plate" label="注册手机号">
-            <Input v-model="formItem.registPhone" placeholder="请输入注册手机号"/>
+            <Input v-model="infoData.registPhone" placeholder="请输入注册手机号"/>
           </FormItem>
         </Form>
       </Card>
@@ -99,16 +95,20 @@
     <div style="display: flex;justify-content: center;margin-top: 20px">
       <Button type="primary" style="width: 200px;" @click="addList">提交</Button>
     </div>
-  </Card>
+  </div>
 </template>
 
 <script type='es6'>
-import { getDmsInfo } from '@/api/data'
+import { getDmsInfo, postAction } from '@/api/data'
 export default {
   name: 'app',
   data () {
     return {
-      formItem: {},
+      formData: {
+        vin: '',
+        idCard: ''
+      },
+      infoData: {},
       vin: ''
     }
   },
@@ -116,14 +116,21 @@ export default {
     // 查询接口
     searchBtn () {
       this.$refs.formInline.validate((valid) => {
-        getDmsInfo({vin: '11111', idCard: '2222222222'}).then(res => {
-
+        if (!valid) return
+        getDmsInfo(this.formData).then(res => {
+          this.infoData = res.data
         })
       })
     },
     // 提交接口
     addList () {
+      const params = {
+        ...this.formData,
+        cdkCode: ''
+      }
+      postAction('/to4sservice/regUser', params).then(res => {
 
+      })
     }
   }
 }

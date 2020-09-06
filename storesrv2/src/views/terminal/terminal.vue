@@ -15,7 +15,7 @@
       </div>
     </Table>
     <!--分页-->
-    <Page :total="pagetotal" show-elevator prev-text="上一页" next-text="下一页" style="margin-top: 20px;display: flex;justify-content: flex-end"></Page>
+    <Page :total="pagetotal" show-elevator @on-change="pageChange"></Page>
   </Card>
 </template>
 
@@ -59,7 +59,8 @@ export default {
         }
       ],
       loading: false,
-      pagetotal: 100
+      pagetotal: 100,
+      pageNo: 1
     }
   },
   mounted () {
@@ -68,7 +69,7 @@ export default {
   methods: {
     getList () {
       let params = {
-        pageIndex: 1,
+        pageIndex: this.pageNo,
         pageSize: 10
       }
       getCdkInfoPageInfo(params).then(res => {
@@ -77,6 +78,10 @@ export default {
     },
     show (index) {
 
+    },
+    pageChange (page) {
+      this.pageNo = page
+      this.getList()
     }
   }
 }

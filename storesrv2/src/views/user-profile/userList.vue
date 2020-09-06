@@ -1,8 +1,5 @@
 <style>
-  .ivu-btn-primary{
-    background-color: deepskyblue;
-    border:deepskyblue;
-  }
+
 </style>
 <!--用户档案页面-->
 <template>
@@ -21,7 +18,7 @@
         </FormItem>
         <FormItem>
           <Button type="primary">查询</Button>
-          <Button style="margin-left: 20px;background-color: #a8a8a8;color: white">清空查询</Button>
+          <Button class="btn-clear" style="margin-left: 20px;">清空查询</Button>
         </FormItem>
       </Form>
     </div>
@@ -33,11 +30,11 @@
       :loading="loading"
     >
       <div slot-scope="{ row }" slot="action">
-        <Button type="primary" size="small" style="margin-right: 5px;color: deepskyblue;background-color: #95fffd" @click="handleShow(row)">查看</Button>
+        <Button style="margin-right: 5px;color: #1d579f; border-color: #1d579f;" @click="handleShow(row)">查看</Button>
       </div>
     </Table>
     <!--分页-->
-    <Page :total="pagetotal" show-elevator prev-text="上一页" next-text="下一页" style="margin-top: 20px;display: flex;justify-content: flex-end"></Page>
+    <Page :total="pagetotal" show-elevator @on-change="pageChange"></Page>
   </Card>
 </template>
 
@@ -91,7 +88,7 @@ export default {
         }
       ],
       loading: false,
-      page: 1,
+      pageNo: 1,
       size: 10,
       pagetotal: 0
     }
@@ -102,17 +99,21 @@ export default {
   methods: {
     getList () {
       let params = {
-        pageIndex: this.page,
+        pageIndex: this.pageNo,
         pageSize: this.size,
-        username: '',
-        autoPlate: '',
-        regDate: ''
+        username: this.formItem.user,
+        autoPlate: this.formItem.plate,
+        regDate: this.formItem.date
       }
       getUserInfoPageInfo(params).then(res => {
         const data = res.data
         this.dataSource = data.list
         this.pagetotal = data.total
       })
+    },
+    pageChange (page) {
+      this.pageNo = page
+      this.getList()
     }
   }
 }

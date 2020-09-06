@@ -95,7 +95,7 @@ export default [
         path: 'user',
         name: 'user_list',
         meta: {
-          icon: 'md-apps',
+          icon: 'md-person',
           title: '用户档案'
         },
         component: () => import('@/views/user-profile/userList.vue')
@@ -125,7 +125,7 @@ export default [
         path: 'terminal',
         name: 'terminal',
         meta: {
-          icon: 'md-desktop',
+          icon: 'md-pulse',
           title: '激活码'
         },
         component: () => import('@/views/terminal/terminal.vue')

@@ -1,9 +1,4 @@
 <style>
-  .ivu-btn-primary{
-    background-color: #093577;
-    border: #093577;
-  }
-
 </style>
 
 <template>
@@ -15,9 +10,9 @@
         <p style="width: 100%;margin-left: 30%">车型：{{type}}</p>
       </div>
       <div style="height: 60px;display: flex;justify-content: space-between">
-        <Button type="primary" style=" background-color: #093577;border: #093577;">继续登记用户</Button>
-        <Button type="primary" style=" background-color: #093577;border: #093577;">查看刚登记用户</Button>
-        <Button type="primary" style=" background-color: #093577;border: #093577;">打开用户档案</Button>
+        <Button type="primary" style=" background-color: #1d579f;border: #1d579f;">继续登记用户</Button>
+        <Button type="primary" style=" background-color: #1d579f;border: #1d579f;">查看刚登记用户</Button>
+        <Button type="primary" style=" background-color: #1d579f;border: #1d579f;">打开用户档案</Button>
       </div>
     </div>
   </Modal>

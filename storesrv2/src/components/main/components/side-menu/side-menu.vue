@@ -1,28 +1,26 @@
 <style>
-
+.ivu-menu-light.ivu-menu-vertical .ivu-menu-item-active:not(.ivu-menu-submenu) { background-color: #e8eef5}
 </style>
 <template>
-  <div>
-    <Menu ref="menu" :active-name="activeName" :open-names="openedNames" theme="light" width="auto" :accordion="accordion" @on-select="handleSelect">
-      <template v-for="item in menuList">
-        <template v-if="item.children && item.children.length > 1">
-          <Submenu :name="item.name" v-if="item.children && item.children.length > 1" :key="item.name">
-            <template slot="title">
-              <Icon :type="item.meta.icon" />
-              {{item.meta.title}}
-            </template>
-            <MenuItem v-for="p in item.children" :key="p.name" :name="p.name">{{p.meta.title}}</MenuItem>
-          </Submenu>
-        </template>
-        <template v-if="item.children && item.children.length === 1">
-          <MenuItem :name="item.children[0].name" :key="item.name">
-            <Icon :type="item.children[0].meta.icon" />
-            {{item.children[0].meta.title}}
-          </MenuItem>
-        </template>
-      </template>
-    </Menu>
-  </div>
+<Menu ref="menu" :active-name="activeName" :open-names="openedNames" theme="light" width="auto" :accordion="accordion" @on-select="handleSelect">
+  <template v-for="item in menuList">
+  <template v-if="item.children && item.children.length > 1">
+  <Submenu :name="item.name" v-if="item.children && item.children.length > 1" :key="item.name">
+    <template slot="title">
+    <Icon :type="item.meta.icon" />
+    {{item.meta.title}}
+    </template>
+    <MenuItem v-for="p in item.children" :key="p.name" :name="p.name">{{p.meta.title}}</MenuItem>
+  </Submenu>
+  </template>
+  <template v-if="item.children && item.children.length === 1">
+  <MenuItem :name="item.children[0].name" :key="item.name">
+    <Icon :type="item.children[0].meta.icon" />
+    {{item.children[0].meta.title}}
+  </MenuItem>
+  </template>
+  </template>
+</Menu>
 </template>
 <script>
 import mixin from './mixin'

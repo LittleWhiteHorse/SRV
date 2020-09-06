@@ -27,7 +27,7 @@
 .main-content {
   height: 100vh;
   /*overflow: hidden;*/
-  background-color: #eff1f4;
+  background-color: #f0f2f5;
   padding: 10px;
 }
 
@@ -48,3 +48,16 @@
   background:#F0F0F0;
   height: 40px;
 }
+
+.main-content .ivu-btn { border-color: #1d579f; color: #1d579f;}
+.main-content .ivu-btn-primary{
+   background-color: #1d579f;
+   border:#1d579f;
+   color: #ffffff;
+}
+.main-content .btn-clear{
+   background-color: #a9bbc6;
+   border:#a9bbc6;
+   color: #ffffff;
+}
+.main-content .ivu-page-item-active { border-color: #1d579f;}

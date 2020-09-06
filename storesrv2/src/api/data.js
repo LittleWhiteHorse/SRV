@@ -25,3 +25,22 @@ export const getDmsInfo = (data) => {
     data
   })
 }
+
+// get方法
+export const getAction = (url, params) => {
+  return axios.request({
+    url,
+    method: 'get',
+    params
+  })
+}
+
+
+// get方法
+export const postAction = (url, data) => {
+  return axios.request({
+    url,
+    method: 'post',
+    data
+  })
+}

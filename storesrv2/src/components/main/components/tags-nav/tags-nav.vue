@@ -3,28 +3,28 @@
 </style>
 <template>
   <div class="tag-nav">
-    <div class="close-box">
-      <Dropdown @on-click="handleTagsClose">
-        <Button type="text">
-          <Icon type="md-close" :size="18" />
-        </Button>
-        <DropdownMenu slot="list">
-          <DropdownItem name="all">关闭全部</DropdownItem>
-          <DropdownItem name="other">关闭其他</DropdownItem>
-        </DropdownMenu>
-      </Dropdown>
-    </div>
-    <div class="btn-box left-btn">
-      <Button type="text" @click="handleScroll(200)">
-        <Icon type="ios-arrow-back" :size="18" />
-      </Button>
-    </div>
+<!--    <div class="close-box">-->
+<!--      <Dropdown @on-click="handleTagsClose">-->
+<!--        <Button type="text">-->
+<!--          <Icon type="md-close" :size="18" />-->
+<!--        </Button>-->
+<!--        <DropdownMenu slot="list">-->
+<!--          <DropdownItem name="all">关闭全部</DropdownItem>-->
+<!--          <DropdownItem name="other">关闭其他</DropdownItem>-->
+<!--        </DropdownMenu>-->
+<!--      </Dropdown>-->
+<!--    </div>-->
+<!--    <div class="btn-box left-btn">-->
+<!--      <Button type="text" @click="handleScroll(200)">-->
+<!--        <Icon type="ios-arrow-back" :size="18" />-->
+<!--      </Button>-->
+<!--    </div>-->
     <div class="tag-box" ref="tagBox">
       <div class="scroll-box" ref="scrollBox" :style="{left: tagBodyLeft + 'px'}">
         <Tag
           ref="tagNavOpen"
+          size="large"
           v-for="(item, index) in list"
-          type="dot"
           :data-route-item="item"
           :closable="item.name !== $config.homeName"
           :color="isCurTag(item) ? 'primary' : 'default'"
@@ -36,11 +36,11 @@
         </Tag>
       </div>
     </div>
-    <div class="btn-box right-btn">
-      <Button type="text" @click="handleScroll(-200)">
-        <Icon type="ios-arrow-forward" :size="18" />
-      </Button>
-    </div>
+<!--    <div class="btn-box right-btn">-->
+<!--      <Button type="text" @click="handleScroll(-200)">-->
+<!--        <Icon type="ios-arrow-forward" :size="18" />-->
+<!--      </Button>-->
+<!--    </div>-->
   </div>
 </template>
 <script>

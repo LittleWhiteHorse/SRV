@@ -15,7 +15,7 @@
         <p style="width: 100%;">为了保留你迪粉汇的权益，请先修改迪粉汇登录手机号或购车手机号</p>
       </div>
       <div style="height: 60px;display: flex;justify-content: center">
-        <Button type="primary" style=" background-color: #093577;border: #093577;width:300px">好的</Button>
+        <Button type="primary" style=" background-color: #1d579f;border: #1d579f;width:300px">好的</Button>
       </div>
     </div>
   </Modal>
