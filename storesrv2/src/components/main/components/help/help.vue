@@ -61,10 +61,24 @@ export default {
   name: 'app',
   data () {
     return {
-      showModal: true,
+      showModal: false,
       step: 1
     }
   },
-  methods: {}
+  mounted () {
+    this.showHelp()
+  },
+  methods: {
+    showHelp () {
+      let data = localStorage.getItem('HELP_KEY')
+      console.log(data)
+      if (data) {
+        this.showModal = false
+      } else {
+        this.showModal = true
+        localStorage.setItem('HELP_KEY', this.modal1)
+      }
+    }
+  }
 }
 </script>

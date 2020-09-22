@@ -21,6 +21,7 @@ module.exports = {
   },
   productionSourceMap: false,
   devServer: {
-    proxy: 'http://10.13.112.226:8068'
+    // proxy: 'http://10.13.112.226:8068'  // 曹(吉飞)工 本地接口地址
+    proxy: 'http://10.167.9.11:8068'
   }
 }

@@ -2,21 +2,31 @@
 
 </style>
 <template>
-<Dropdown @on-click="handleClick" placement="bottom-end">
-  <a href="javascript:void(0)" style="color: #ffffff">
-    {{userName}}
-    <Icon type="md-arrow-dropdown" />
-  </a>
-  <DropdownMenu slot="list">
-    <DropdownItem name="password">修改密码</DropdownItem>
-    <DropdownItem name="logout">退 出</DropdownItem>
-  </DropdownMenu>
-</Dropdown>
+  <div>
+    <Dropdown @on-click="handleClick" placement="bottom-end">
+      <a href="javascript:void(0)" style="color: #ffffff">
+        {{userName}}
+        <Icon type="md-arrow-dropdown" />
+      </a>
+      <DropdownMenu slot="list">
+        <DropdownItem name="password">修改密码</DropdownItem>
+        <DropdownItem name="logout">退 出</DropdownItem>
+      </DropdownMenu>
+    </Dropdown>
+
+    <!--修改密码弹框组件-->
+    <password ref="editPW"></password>
+    <!--修改密码弹框组件-->
+  </div>
 </template>
 <script>
 import { mapActions } from 'vuex'
+import password from './module/password.vue'
 export default {
   name: 'User',
+  components: {
+    password
+  },
   props: {
     userName: String
   },
@@ -41,7 +51,7 @@ export default {
           this.logout();
           break
         case 'password':
-          this.$router.push({ name: 'edit' });
+          this.$refs.editPW.showModal();
           break
       }
     }

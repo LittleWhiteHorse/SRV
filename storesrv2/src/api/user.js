@@ -19,6 +19,15 @@ export const logout = () => {
   })
 }
 
+// 修改密码
+export const updatePassword = (data) => {
+  return axios.request({
+    url: '/to4sservice/updatePassword',
+    method: 'post',
+    data
+  })
+}
+
 // 获取服务店名称信息
 export const getAfterUserInfo = () => {
   return axios.request({

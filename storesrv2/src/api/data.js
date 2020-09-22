@@ -36,7 +36,7 @@ export const getAction = (url, params) => {
 }
 
 
-// get方法
+// post方法
 export const postAction = (url, data) => {
   return axios.request({
     url,

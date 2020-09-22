@@ -137,6 +137,8 @@ export default {
       })
     },
     isCurTag (item) {
+      console.log(item)
+      console.log(this.curRouter)
       return equalRoute(this.curRouter, item)
     },
     handleClick (item) {

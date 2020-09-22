@@ -23,9 +23,9 @@
           <Layout style="background-color: transparent;">
             <tags-nav :routeCur="$route" @clickTag="handleClick" :list="tagsNavList" @on-close="handleCLoseTag"></tags-nav>
             <Content class="content-wrapper">
-              <keep-alive>
+              <!--<keep-alive>-->
                 <router-view/>
-              </keep-alive>
+              <!--</keep-alive>-->
             </Content>
           </Layout>
         </Content>

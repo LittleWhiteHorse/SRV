@@ -23,8 +23,8 @@ const turnTo = (to, access, next) => {
 }
 
 router.beforeEach((to, from, next) => {
-  next()
-  return
+  // next()
+  // return
   ViewUI.LoadingBar.start()
   const token = getToken()
   console.log('to', to)

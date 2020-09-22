@@ -17,7 +17,7 @@
           <DatePicker type="date" v-model="formItem.date" placeholder="请选择登记日期"></DatePicker>
         </FormItem>
         <FormItem>
-          <Button type="primary">查询</Button>
+          <Button type="primary" @click="handleSearch">查询</Button>
           <Button class="btn-clear" style="margin-left: 20px;">清空查询</Button>
         </FormItem>
       </Form>
@@ -29,7 +29,7 @@
       :data="dataSource"
       :loading="loading"
     >
-      <div slot-scope="{ row }" slot="action">
+      <div slot-scope="{ row, index }" slot="action">
         <Button style="margin-right: 5px;color: #1d579f; border-color: #1d579f;" @click="handleShow(row)">查看</Button>
       </div>
     </Table>
@@ -41,6 +41,7 @@
 </template>
 
 <script>
+import { mapMutations } from 'vuex'
 import { getUserInfoPageInfo } from '@/api/data'
 export default {
   name: 'app',
@@ -99,7 +100,11 @@ export default {
     this.getList()
   },
   methods: {
+    ...mapMutations([
+      'handleSaveDetail'
+    ]),
     getList () {
+      alert('userlist')
       let params = {
         pageIndex: this.pageNo,
         pageSize: this.size,
@@ -115,6 +120,16 @@ export default {
     },
     pageChange (page) {
       this.pageNo = page
+      this.getList()
+    },
+    handleShow (row) {
+      this.handleSaveDetail(row)
+      this.$router.push({
+        name: 'user_details'
+      })
+    },
+    handleSearch () {
+      this.pageNo = 1
       this.getList()
     }
   }

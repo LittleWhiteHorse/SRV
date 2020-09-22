@@ -67,6 +67,7 @@ export default {
         logout().then(res => {
           commit('setToken', '')
           commit('setUserName', '')
+          localStorage.setItem('HELP_KEY', '')
           resolve(res)
         }).catch(err => {
           reject(err)

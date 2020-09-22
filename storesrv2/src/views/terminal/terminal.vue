@@ -18,13 +18,21 @@
     <div style="margin-top: 8px; display: flex; justify-content: flex-end;">
       <Page :total="pagetotal" show-elevator @on-change="pageChange"></Page>
     </div>
+    <!--手机号验证组件-->
+    <phone-valid ref="phoneVaild"></phone-valid>
+    <!--手机号验证组件-->
+
   </Card>
 </template>
 
 <script type='es6'>
 import { getCdkInfoPageInfo } from '@/api/data'
+import phoneValid from './module/phoneValid.vue'
 export default {
   name: 'app',
+  components: {
+    phoneValid
+  },
   data () {
     return {
       dataSource: [],
@@ -61,7 +69,7 @@ export default {
         }
       ],
       loading: false,
-      pagetotal: 100,
+      pagetotal: 0,
       pageNo: 1
     }
   },
@@ -70,16 +78,18 @@ export default {
   },
   methods: {
     getList () {
+      alert('cdk')
       let params = {
         pageIndex: this.pageNo,
         pageSize: 10
       }
       getCdkInfoPageInfo(params).then(res => {
-        this.dataSource = res
+        this.dataSource = res.data.list
+        this.pagetotal = res.data.total
       })
     },
     show (index) {
-
+      this.$refs.phoneVaild.showModal()
     },
     pageChange (page) {
       this.pageNo = page

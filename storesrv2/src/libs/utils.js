@@ -152,18 +152,20 @@ const hasAccess = (access, route) => {
  * @description 用户是否可跳转到该页
  */
 export const canTurnTo = (name, access, routes) => {
+  console.log(routes)
   const routePermissionJudge = (list) => {
     return list.some(item => {
       if (item.children && item.children.length) {
         console.log(item)
         return routePermissionJudge(item.children)
+        console.log(routePermissionJudge(item.children))
       } else if (item.name === name) {
         return hasAccess(access, item)
       }
     })
   }
-
   return routePermissionJudge(routes)
+  console.log(routePermissionJudge(routes))
 }
 
 /**

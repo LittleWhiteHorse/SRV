@@ -20,7 +20,6 @@ export default [
     path: '/register',
     name: 'register',
     meta: {
-      // hideInBread: true
       title: '登记用户',
       icon: 'md-apps'
     },
@@ -30,55 +29,11 @@ export default [
         path: 'registerUser',
         name: 'register_user',
         meta: {
+          hideInMenu: true,
           icon: 'md-apps',
           title: '登记用户'
         },
         component: () => import('@/views/register/registerUser.vue')
-      },
-      {
-        path: 'registerModel',
-        name: 'register_model',
-        meta: {
-          icon: 'md-apps',
-          title: '弹窗'
-        },
-        component: () => import('@/views/register/modules/registerModel.vue')
-      },
-      {
-        path: 'success',
-        name: 'success_modal',
-        meta: {
-          icon: 'md-apps',
-          title: '开通成功'
-        },
-        component: () => import('@/views/register/modules/successModal.vue')
-      },
-      {
-        path: 'used',
-        name: 'used_modal',
-        meta: {
-          icon: 'md-apps',
-          title: '手机号码被占用'
-        },
-        component: () => import('@/views/register/modules/usedModal.vue')
-      },
-      {
-        path: 'different',
-        name: 'different_modal',
-        meta: {
-          icon: 'md-apps',
-          title: '购车手机号不一致'
-        },
-        component: () => import('@/views/register/modules/differentModal.vue')
-      },
-      {
-        path: 'idCardDiff',
-        name: 'idCardDiff_modal',
-        meta: {
-          icon: 'md-apps',
-          title: '购车手机号不一致二'
-        },
-        component: () => import('@/views/register/modules/idCardDiffModal.vue')
       }
     ]
   },
@@ -101,7 +56,7 @@ export default [
         component: () => import('@/views/user-profile/userList.vue')
       },
       {
-        path: '/details/:id',
+        path: 'details',
         name: 'user_details',
         meta: {
           icon: 'md-apps',
