@@ -1,0 +1,146 @@
+* { margin: 0; padding: 0;}
+ul { list-style: none; }
+a { text-decoration: none; }
+img { border: none; }
+
+html, body {
+    position: relative;
+    height: 100%;
+}
+body {
+    background: url("../images/allBg.png") repeat;
+    font-family: 微软雅黑 Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    color:#000;
+    margin: 0;
+    padding: 0;
+}
+#app,.swiper-container {
+    width: 100%;
+    height: 100%;
+}
+.swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    overflow: hidden;
+    /*background: #fff;*/
+    /* Center slide text vertically */
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+
+
+.textDialog {
+    width: 100%;
+    position: absolute;
+    top: 15%;
+    color: #38a9ff;
+    font-size: 0.17rem;
+    line-height: 0.34rem;
+    -webkit-background-size: 100% 100%;
+    background-size: 100% 100%;
+    z-index: 999;
+}
+
+.textDialog div {
+    text-align: left;
+    padding: 0.4rem 0.68rem;
+    letter-spacing: 0.03rem;
+}
+
+.textDialog img {
+    width: 100%;
+    height: auto;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: -1;
+}
+
+
+.cover-in { animation: 1.5s coverTextIn; }
+.cover-out { animation: 1.5s coverTextOut; }
+
+@keyframes coverTextIn {
+    0% {
+        opacity: 0;
+        transform: translate(0, -2.7rem);
+    }
+    100% {
+        transform: translate(0, 0rem);
+        opacity: 1;
+    }
+}
+
+@keyframes coverTextOut {
+    0% {
+        transform: translate(0, 0);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(0, -2.7rem);
+        opacity: 0;
+    }
+}
+
+.background-in { animation: 3s backgroundIn linear; }
+.background-out { animation: 2s backgroundOut; }
+
+@keyframes backgroundIn {
+    0% { opacity: 0; }
+    100% { opacity: 1}
+}
+
+@keyframes backgroundOut {
+    0% { opacity: 1}
+    100% { opacity: 0}
+}
+
+
+.rise-in {animation: 2s riseRun;}
+.fall-out { animation: 2s fallRun; }
+
+@keyframes riseRun {
+    0% {
+        transform: translateY(2.5rem);
+    }
+    100% {
+        transform: translateY(0rem);
+    }
+}
+
+@keyframes fallRun {
+    0% {
+        transform: translateY(0rem);
+    }
+    100% {
+        transform: translateY(2.5rem);
+    }
+}
+
+
+
+@media only screen and (min-aspect-ratio: 29/50){
+    .textDialog {
+        width: 100%;
+        position: absolute;
+        top: 8%;
+        color: #38a9ff;
+        font-size: 0.17rem;
+        line-height: 0.34rem;
+        -webkit-background-size: 100% 100%;
+        background-size: 100% 100%;
+        z-index: 999;
+    }
+}
+

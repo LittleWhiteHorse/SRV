@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maixmum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <title>DiLink</title>
+    <link rel="stylesheet" href="css/swiper.css">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/index.css">
+    <!-- Swiper JS -->
+    <script src="js/jquery-3.5.0.min.js"></script>
+    <script src="js/swiper.js"></script>
+    <script src="js/vue.min.js"></script>
+    <script src="js/vue-awesome-swiper.js"></script>
+    <script type="text/javascript">
+        Vue.use(window.VueAwesomeSwiper)
+    </script>
+
+</head>
+<body>
+<div id="app">
+    <!-- Swiper -->
+    <template>
+        <swiper :options="swiperOption" ref="mySwiper">
+            <!-- slides -->
+            <!--First screen start-->
+            <swiper-slide class="pageOne">
+                <transition
+                        enter-active-class="cover-in"
+                        leave-active-class="cover-out">
+                    <div class="pageOne_text" v-if="cover">
+                        <img src="images/cover/cover_dialog.png" alt="">
+                    </div>
+                </transition>
+                <transition
+                        enter-active-class="background-in"
+                        leave-active-class="background-out">
+                    <div class="pageOne_background" v-if="cover">
+                        <div id="pageOne_background_circles"></div>
+                        <img src="images/cover/cover_platform.png" alt="">
+                    </div>
+                </transition>
+            </swiper-slide>
+            <!--First screen end-->
+
+            <!--Second screen start-->
+            <swiper-slide class="pageTwo">
+                <transition
+                        enter-active-class="cover-in"
+                        leave-active-class="cover-out">
+                    <div class="textDialog" v-if="pageOneShow">
+                        <div>
+                            自适应智能旋转大屏<br />
+                            根据显示内容进行调整<br />
+                            满足车主不同观看需求<br />
+                        </div>
+                        <img src="images/textDialog.png" alt="">
+                    </div>
+                </transition>
+                <transition
+                        enter-active-class="rise-in"
+                        leave-active-class="fall-out">
+                    <div class="pageTwo_background" v-if="pageOneShow">
+                        <div class="pageTwo_background_dynamic">
+                            <img class="horizontal" src="images/second/horizontal.png" alt="">
+                            <img class="portrait" src="images/second/portrait.png" alt="">
+                            <div class="pageTwo_background_circle circle1"></div>
+                            <div class="pageTwo_background_circle circle2"></div>
+                        </div>
+                        <img src="images/second/second_BG.png" alt="">
+                    </div>
+                </transition>
+            </swiper-slide>
+            <!--Second screen end-->
+            <!--Third screen start-->
+            <swiper-slide class="pageThree">
+                <transition
+                        enter-active-class="cover-in"
+                        leave-active-class="cover-out">
+                    <div class="textDialog" v-if="pageTwoShow">
+                        <div class="pageThree_text">
+                            开放式安卓生态<br />
+                            兼容百万级手机应用<br />
+                            提供丰富的用车场景和服务<br />
+                        </div>
+                        <img src="images/textDialog.png" alt="">
+                    </div>
+                </transition>
+                <transition
+                        enter-active-class="rise-in"
+                        leave-active-class="fall-out">
+                    <div class="pageThree_background" v-if="pageTwoShow">
+                        <div id="pageThree_background_square"></div>
+                        <img src="images/third/third_BG.png" alt="">
+                    </div>
+                </transition>
+            </swiper-slide>
+            <!--Third screen end-->
+
+            <!--Fourth screen start-->
+            <swiper-slide class="pageFour">
+                <transition
+                    enter-active-class="cover-in"
+                    leave-active-class="cover-out">
+                    <div class="textDialog" v-if="pageThreeShow">
+                        <div>
+                            K歌、游戏、追剧<br />
+                            购物、听歌、刷抖音<br />
+                            快乐出行车生活不再无趣<br />
+                        </div>
+                        <img src="images/textDialog.png" alt="">
+                    </div>
+                </transition>
+                <transition
+                        enter-active-class="rise-in"
+                        leave-active-class="fall-out">
+                    <div class="pageFour_background" v-if="pageThreeShow">
+                        <div class="pageFour_background_icon">
+                            <div class="gameBox">
+                                <img class="game" src="images/fourth/game.png" alt="">
+                                <span class="circleIcon"></span>
+                            </div>
+                            <div class="shoppingBox">
+                                <img class="shopping" src="images/fourth/shopping.png" alt="">
+                                <span class="circleIcon"></span>
+                            </div>
+                            <div class="musicBox">
+                                <img class="music" src="images/fourth/music.png" alt="">
+                                <span class="circleIcon"></span>
+                            </div>
+                        </div>
+                        <img src="images/fourth/fourth_BG.png" alt="">
+                    </div>
+                </transition>
+            </swiper-slide>
+            <!--Fourth screen end-->
+
+            <!--Fifth screen start-->
+            <swiper-slide class="pageFive">
+                <transition
+                        enter-active-class="cover-in"
+                        leave-active-class="cover-out">
+                    <div class="textDialog" v-if="pageFourShow">
+                        <div class="pageFive_text">
+                            透明全景影像<br />
+                            千里眼-远程影像<br />
+                            定制版地图导航<br />
+                            打造全新智慧出行<br />
+                        </div>
+                        <img src="images/textDialog.png" alt="">
+                    </div>
+                </transition>
+                <div class="pageFive_feature" v-if="pageFourShow">
+                    <div class="pageFive_feature_map">
+                        <div class="mapBox">
+                            <span class="mapIcon"></span>
+                            <img class="mapImg" src="images/fifth/map.png" alt="">
+                            <span class="mapRing"></span>
+                        </div>
+                        <span class="shortLine"></span>
+                    </div>
+                    <div class="pageFive_feature_phone">
+                        <div class="phoneBox">
+                            <img class="phoneImg" src="images/fifth/phone.png" alt="">
+                            <span class="phoneRing"></span>
+                        </div>
+                        <span class="longLine"></span>
+                    </div>
+                    <div class="pageFive_feature_pad">
+                        <div class="padBox">
+                            <img class="padImg" src="images/fifth/pad.png" alt="">
+                            <span class="padRing"></span>
+                        </div>
+                    </div>
+                </div>
+                <transition
+                        enter-active-class="background-in"
+                        leave-active-class="background-out">
+                    <div class="pageFive_background" v-if="pageFourShow">
+                        <img src="images/fifth/fifth_BG.png" alt="">
+                    </div>
+                </transition>
+            </swiper-slide>
+            <!--Fifth screen end-->
+
+            <!--Sixth screen start-->
+            <swiper-slide class="pageSix">
+                <transition
+                        enter-active-class="cover-in"
+                        leave-active-class="cover-out">
+                    <div class="textDialog" v-if="pageFiveShow">
+                        <div class="pageFive_text">
+                            AI智能语音交互<br/>
+                            童声识别<br/>
+                            支持模糊语义识别<br/>
+                            “你好，小迪”，一呼即应<br/>
+                        </div>
+                        <img src="images/textDialog.png" alt="">
+                    </div>
+                </transition>
+                <transition
+                        enter-active-class="background-in"
+                        leave-active-class="background-out">
+                    <div class="pageSix_background" v-if="pageFiveShow">
+                        <div class="pageSix_background_feature">
+                            <div class="awaken">
+                                <img src="images/sixth/awaken.png" alt="">
+                            </div>
+                            <div class="mutual">
+                                <img src="images/sixth/mutual.png" alt="">
+                            </div>
+                            <div class="search">
+                                <img src="images/sixth/search.png" alt="">
+                            </div>
+                            <div class="open">
+                                <img src="images/sixth/open.png" alt="">
+                            </div>
+                        </div>
+                        <div id="pageSix_background_circles"></div>
+                        <img src="images/sixth/microphone-1.png" alt="">
+                    </div>
+                </transition>
+            </swiper-slide>
+            <!--Sixth screen end-->
+
+            <!--Seventh screen start-->
+            <swiper-slide class="pageSeven">
+                <transition
+                        enter-active-class="cover-in"
+                        leave-active-class="cover-out">
+                    <div class="textDialog" v-if="pageSixShow">
+                        <div class="pageThree_text">
+                            比亚迪云服务<br/>
+                            APP远程控制全场景<br/>
+                            数字钥匙让您便捷操控车辆<br/>
+                        </div>
+                        <img src="images/textDialog.png" alt="">
+                    </div>
+                </transition>
+                <div class="pageSeven_box" v-if="pageSixShow">
+                    <div class="pageSeven_box_wifi">
+                        <img class="topWifi" src="images/seventh/wifi3.png" alt="">
+                        <img class="middleWifi" src="images/seventh/wifi2.png" alt="">
+                        <img class="bottomWifi" src="images/seventh/wifi1.png" alt="">
+                    </div>
+                    <div class="pageSeven_box_phone">
+                        <div id="leftSpot"></div>
+                        <div id="rightSpot"></div>
+                        <img src="images/seventh/sevenPhone-1.png" alt="">
+                    </div>
+                    <span class="leftCloud leftCloud-in"></span>
+                    <span class="rightCloud"></span>
+                </div>
+                <transition
+                        enter-active-class="background-in"
+                        leave-active-class="background-out">
+                    <div class="pageSeven_background" v-if="pageSixShow">
+                        <img src="images/seventh/seventh_BG.png" alt="">
+                    </div>
+                </transition>
+            </swiper-slide>
+            <!--Seventh screen end-->
+
+            <!--Eighth screen start-->
+            <swiper-slide class="pageEight">
+                <transition
+                        enter-active-class="cover-in"
+                        leave-active-class="cover-out">
+                    <div class="textDialog" v-if="pageSevenShow">
+                        <div class="pageEight_text">
+                            微信扫描二维码<br/>
+                            关注"比亚迪云服务"公众号<br/>
+                            了解DiLink最新资讯<br/>
+                            客服电话：400-830-3666
+                        </div>
+                        <img src="images/textDialog.png" alt="">
+                    </div>
+                </transition>
+                <transition
+                        enter-active-class="rise-in"
+                        leave-active-class="fall-out">
+                    <div class="pageEight_background" v-if="pageSevenShow">
+                        <img src="images/eighth/ending.png" alt="">
+                    </div>
+                </transition>
+            </swiper-slide>
+            <!--Eighth screen end-->
+            <!-- Optional controls -->
+            <!--<div class="swiper-pagination"  slot="pagination"></div>-->
+        </swiper>
+        <!-- Swiper -->
+    </template>
+</div>
+<script src="js/index.js"></script>
+
+</body>
+</html>
