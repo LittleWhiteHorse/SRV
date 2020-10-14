@@ -18,10 +18,9 @@ module.exports = {
     config.resolve.alias
       .set('@', resolve('src')) // key,value自行定义，比如.set('@@', resolve('src/components'))
       .set('_c', resolve('src/components'))
-  },
-  productionSourceMap: false,
-  devServer: {
-    // proxy: 'http://10.13.112.226:8068'  // 曹(吉飞)工 本地接口地址
-    proxy: 'http://10.167.9.11:8068'
   }
+  // productionSourceMap: false,
+  // devServer: {
+  //   proxy: 'http://10.13.112.226:8068'
+  // }
 }

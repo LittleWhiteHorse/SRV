@@ -42,7 +42,7 @@ export default [
     name: 'app',
     component: Main,
     meta: {
-      title: '用户档案',
+      title: '用户管理',
       icon: 'md-apps'
     },
     children: [
@@ -51,7 +51,7 @@ export default [
         name: 'user_list',
         meta: {
           icon: 'md-person',
-          title: '用户档案'
+          title: '用户管理'
         },
         component: () => import('@/views/user-profile/userList.vue')
       },

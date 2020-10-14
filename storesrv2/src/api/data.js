@@ -3,8 +3,8 @@ import axios from '@/libs/api.request'
 // 获取已注册用户信息分页
 export const getUserInfoPageInfo = (data) => {
   return axios.request({
-    url: '/to4sservice/getUserInfoPageInfo',
-    method: 'post',
+    url: '../mock/getUserInfoPageInfo.json',
+    method: 'get',
     data
   })
 }
@@ -12,7 +12,7 @@ export const getUserInfoPageInfo = (data) => {
 export const getCdkInfoPageInfo = (data) => {
   return axios.request({
     url: '/to4sservice/getCdkInfoPageInfo',
-    method: 'post',
+    method: 'get',
     data
   })
 }
@@ -21,26 +21,7 @@ export const getCdkInfoPageInfo = (data) => {
 export const getDmsInfo = (data) => {
   return axios.request({
     url: '/to4sservice/getDmsInfo',
-    method: 'post',
-    data
-  })
-}
-
-// get方法
-export const getAction = (url, params) => {
-  return axios.request({
-    url,
     method: 'get',
-    params
-  })
-}
-
-
-// post方法
-export const postAction = (url, data) => {
-  return axios.request({
-    url,
-    method: 'post',
     data
   })
 }
