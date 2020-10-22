@@ -14,12 +14,12 @@ export const login = (data) => {
 // 退出
 export const logout = () => {
   return axios.request({
-    url: '/to4s/logout',
-    method: 'post'
+    url: '../mock/logout.json',
+    method: 'get'
   })
 }
 
-// 获取服务店名称信息
+
 export const getAfterUserInfo = () => {
   return axios.request({
     url: '../mock/getAfterUserInfo.json',

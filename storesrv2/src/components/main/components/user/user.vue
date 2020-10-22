@@ -20,6 +20,7 @@
   </div>
 </template>
 <script>
+
 import { mapActions } from 'vuex'
 import password from './module/password.vue'
 export default {

@@ -47,7 +47,7 @@ export default {
           align: 'center'
         },
         {
-          title: '激活码',
+          title: '状态码',
           key: 'cdkName ',
           align: 'center'
         },
@@ -78,7 +78,6 @@ export default {
   },
   methods: {
     getList () {
-      alert('cdk')
       let params = {
         pageIndex: this.pageNo,
         pageSize: 10

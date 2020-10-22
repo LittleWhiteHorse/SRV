@@ -14,28 +14,7 @@ export default [
     path: '/',
     name: 'Home',
     redirect: 'user_list',
-    component: Main,
-  },
-  {
-    path: '/register',
-    name: 'register',
-    meta: {
-      title: '登记用户',
-      icon: 'md-apps'
-    },
-    component: Main,
-    children: [
-      {
-        path: 'registerUser',
-        name: 'register_user',
-        meta: {
-          hideInMenu: true,
-          icon: 'md-apps',
-          title: '登记用户'
-        },
-        component: () => import('@/views/register/registerUser.vue')
-      }
-    ]
+    component: Main
   },
   {
     path: '/app',
@@ -72,7 +51,7 @@ export default [
     name: 'terminal',
     component: Main,
     meta: {
-      title: '激活码',
+      title: '状态码',
       icon: 'md-desktop'
     },
     children: [
@@ -81,7 +60,7 @@ export default [
         name: 'terminal',
         meta: {
           icon: 'md-pulse',
-          title: '激活码'
+          title: '状态码'
         },
         component: () => import('@/views/terminal/terminal.vue')
       }

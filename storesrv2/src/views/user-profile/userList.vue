@@ -5,23 +5,23 @@
 <template>
   <Card :bordered="false">
     <!--顶部查询-->
-    <div>
-      <Form :model="formItem" inline :label-width="80">
-        <FormItem prop="user" label="客户姓名">
-          <Input v-model="formItem.user" placeholder="请输入客户姓名"/>
-        </FormItem>
-        <FormItem prop="plate" label="车牌号">
-          <Input v-model="formItem.plate" placeholder="请输入车牌号"/>
-        </FormItem>
-        <FormItem prop="date" label="登记日期">
-          <DatePicker type="date" v-model="formItem.date" placeholder="请选择登记日期"></DatePicker>
-        </FormItem>
-        <FormItem>
-          <Button type="primary" @click="handleSearch">查询</Button>
-          <Button class="btn-clear" style="margin-left: 20px;">清空查询</Button>
-        </FormItem>
-      </Form>
-    </div>
+<!--    <div>-->
+<!--      <Form :model="formItem" inline :label-width="80">-->
+<!--        <FormItem prop="user" label="客户姓名">-->
+<!--          <Input v-model="formItem.user" placeholder="请输入客户姓名"/>-->
+<!--        </FormItem>-->
+<!--        <FormItem prop="plate" label="车牌号">-->
+<!--          <Input v-model="formItem.plate" placeholder="请输入车牌号"/>-->
+<!--        </FormItem>-->
+<!--        <FormItem prop="date" label="登记日期">-->
+<!--          <DatePicker type="date" v-model="formItem.date" placeholder="请选择登记日期"></DatePicker>-->
+<!--        </FormItem>-->
+<!--        <FormItem>-->
+<!--          <Button type="primary" @click="handleSearch">查询</Button>-->
+<!--          <Button class="btn-clear" style="margin-left: 20px;">清空查询</Button>-->
+<!--        </FormItem>-->
+<!--      </Form>-->
+<!--    </div>-->
     <!--表格-->
     <Table
       border
@@ -60,12 +60,12 @@ export default {
           align: 'center'
         },
         {
-          title: '登记日期',
-          key: 'autoRegistDate',
+          title: '创建日期',
+          key: 'createTime',
           align: 'center'
         },
         {
-          title: '客户姓名',
+          title: '姓名',
           key: 'userName',
           align: 'center'
         },
@@ -75,13 +75,13 @@ export default {
           align: 'center'
         },
         {
-          title: '车牌号',
-          key: 'autoPlate',
+          title: '邮箱',
+          key: 'email',
           align: 'center'
         },
         {
-          title: '车型',
-          key: 'modelName',
+          title: '地址',
+          key: 'address',
           align: 'center'
         },
         {
@@ -104,7 +104,6 @@ export default {
       'handleSaveDetail'
     ]),
     getList () {
-      alert('userlist')
       let params = {
         pageIndex: this.pageNo,
         pageSize: this.size,

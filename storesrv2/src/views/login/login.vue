@@ -1,7 +1,7 @@
 <template>
   <div class="loginBackground">
     <Card class="loginBox">
-      <h2>欢迎登陆4S店服务系统</h2>
+      <h2>欢迎登陆后台管理系统</h2>
       <Form :model="formInline" :rules="ruleInline" ref="formInline">
         <FormItem prop="user">
           <!-- 账号输入框 -->
@@ -9,7 +9,7 @@
         </FormItem>
         <FormItem prop="password">
           <!-- 密码输入框 -->
-          <Input type="password" v-model="formInline.password" placeholder="请输入密码..." />
+          <Input type="password" v-model="formInline.password" placeholder="请输入任意密码..." />
         </FormItem>
         <FormItem>
           <Button type="primary" @click="handleSubmit" long>登 录</Button>
@@ -25,16 +25,16 @@ export default {
   data () {
     return {
       formInline: {
-        user: 'QI.CHAOCHAO@BYD.COM',
+        user: 'admin',
         password: ''
       },
       ruleInline: {
         user: [
-          { required: true, message: 'Please fill in the user name', trigger: 'blur' }
+          { required: true, message: '请输入用户名。', trigger: 'blur' }
         ],
         password: [
-          { required: true, message: 'Please fill in the password.', trigger: 'blur' },
-          { type: 'string', min: 6, message: 'The password length cannot be less than 6 bits', trigger: 'blur' }
+          { required: true, message: '请输入密码。', trigger: 'blur' },
+          { type: 'string', min: 6, message: '请任意输入6位密码', trigger: 'blur' }
         ]
       }
     }

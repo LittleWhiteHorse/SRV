@@ -11,17 +11,9 @@ export const getUserInfoPageInfo = (data) => {
 // 获取激活码列表
 export const getCdkInfoPageInfo = (data) => {
   return axios.request({
-    url: '/to4sservice/getCdkInfoPageInfo',
+    url: '/to4sservice/getCdkInfoPageInfo.json',
     method: 'get',
     data
   })
 }
 
-// 根据VIN和证件号获取销服数据
-export const getDmsInfo = (data) => {
-  return axios.request({
-    url: '/to4sservice/getDmsInfo',
-    method: 'get',
-    data
-  })
-}

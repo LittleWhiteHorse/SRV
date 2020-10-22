@@ -5,7 +5,7 @@
   <div class="layout">
     <Layout style="height: 100vh;">
       <Header class="ivu-layout-header">
-        <div class="layout-logo">4S服务系统</div>
+        <div class="layout-logo">后台管理系统</div>
         <div class="layout-nav">
           <user :user-name="userName"></user>
         </div>
@@ -13,11 +13,11 @@
       <Layout>
         <Sider :style="{ background: '#fff'}" ref="side1" hide-trigger collapsible :collapsed-width="78" v-model="isCollapsed">
           <!-- 登记用户 -->
-          <registered-user></registered-user>
+<!--          <registered-user></registered-user>-->
           <!-- 导航菜单 -->
           <side-menu ref="sideMenu" :menu-list="menuList" :active-name="$route.name" @on-select="turnToPage"></side-menu>
           <!-- 使用帮助 -->
-          <use-help />
+<!--          <use-help />-->
         </Sider>
         <Content class="main-content">
           <Layout style="background-color: transparent;">
@@ -37,8 +37,6 @@
 import sideMenu from './components/side-menu/side-menu.vue'
 import User from './components/user'
 import TagsNav from './components/tags-nav'
-import registeredUser from './components/registered-user'
-import UseHelp from './components/help'
 import routers from '@/router/routers'
 import { mapMutations } from 'vuex'
 import { equalRoute } from '@/libs/utils'
@@ -47,9 +45,7 @@ export default {
   components: {
     sideMenu,
     User,
-    TagsNav,
-    registeredUser,
-    UseHelp
+    TagsNav
   },
   data () {
     return {
