@@ -1,0 +1,7 @@
+svg 可缩放矢量图形
+
+image mask forginObject defs 是他的属性
+
+svg内不能直接使用img   引入图片要用image
+
+forginObject 可参考 https://www.cnblogs.com/fangsmile/p/11649683.html

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>进阶篇</title>
+</head>
+<body>
+    <!-- 示例一 封装组件 template的写法 -->
+    <div id="app1">
+        <h6>示例一 封装组件 template的写法</h6>
+        <anchor :level="2" title="特性">特性</anchor>
+        <script type="text/x-template" id="anchor">
+            <div>
+                <h1 v-if="level===1">
+                    <a :href="'#' + title">
+                        <slot></slot>
+                    </a>
+                </h1>
+                <h2 v-if="level===2">
+                    <a :href="'#' + title">
+                        <slot></slot>
+                    </a>
+                </h2>
+                <h3 v-if="level===3">
+                    <a :href="'#' + title">
+                        <slot></slot>
+                    </a>
+                </h3>
+                <h4 v-if="level===4">
+                    <a :href="'#' + title">
+                        <slot></slot>
+                    </a>
+                </h4>
+                <h5 v-if="level===5">
+                    <a :href="'#' + title">
+                        <slot></slot>
+                    </a>
+                </h5>
+                <h6 v-if="level===6">
+                    <a :href="'#' + title">
+                        <slot></slot>
+                    </a>
+                </h6>
+            </div>
+        </script>
+    </div>
+
+    <!-- 示例一 封装组件 使用render函数改写后 -->
+    <div id="app1_2">
+        <h6>示例一 封装组件 使用render函数改写后</h6>
+        <anchor :level="2" title="特性">特性</anchor>
+    </div>
+
+    <!-- 示例二 使用传统的template -->
+    <div id="app2_1">
+        <h6>示例二 使用传统的template</h6>
+        <ele></ele>
+    </div>
+
+    <!-- 示例二 使用render函数 -->
+    <div id="app2_2">
+        <h6>示例二 使用render函数</h6>
+        <ele></ele>
+    </div>
+
+    <!-- 示例三 重复渲染多个组件（或元素）的方法 -->
+    <div id="app3">
+        <h6>示例三 重复渲染多个组件（或元素）的方法</h6>
+        <ele></ele>
+    </div>
+
+    <!-- 示例三 重复渲染含有组件的slot的方法 -->
+    <div id="app3_2">
+        <h6>示例三 重复渲染含有组件的slot的方法</h6>
+        <ele>
+            <Child></Child>
+        </ele>
+    </div>
+
+    <!-- 示例四 使用原生javascript代替vue的内置指令 -->
+    <div id="app4_1">
+        <h6>示例四 使用原生javascript代替vue的内置指令</h6>
+        <ele :show="show">
+            <button @click="show = !show">切换 show</button>
+        </ele>
+    </div>
+    <div id="app4_2">
+        <ele :list='list'></ele>
+    </div>
+
+    <!-- 示例五 if、else语句和数组map方法充分配合使用来渲染 -->
+    <div id="app5">
+        <h6>示例五 if、else语句和数组map方法充分配合使用来渲染</h6>
+        <ele :list="list"></ele>
+        <button @click="handleClick">显示列表</button>
+    </div>
+
+    <!-- 示例六  -->
+    <div id="app6">
+        <ele></ele>
+    </div>
+
+    <!-- 示例七 聊天发送内容场景 -->
+    <div id="app7">
+        <h6>示例七 聊天发送内容场景</h6>
+        <ele></ele>
+    </div>
+
+    <!-- 示例八  -->
+    <div id="app8">
+        <h6>示例八</h6>
+        <ele></ele>
+        <ele>
+            <p>slot的内容</p>
+        </ele>
+    </div>
+
+    <!-- 示例九 -->
+    <div id="app9">
+        <h6>示例九</h6>
+        <smart-item :data="data"></smart-item>
+        <button @click="change('img')">切换为图片组件</button>
+        <button @click="change('video')">切换为视频组件</button>
+        <button @click="change('text')">切换为文本组件</button>
+    </div>
+
+    <script type="text/javascript" src="js/vue.min.js"></script>
+    <script type="text/javascript" src="js/advanced.js"></script>
+</body>
+</html>

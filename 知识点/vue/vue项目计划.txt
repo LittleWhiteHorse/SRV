@@ -1,0 +1,21 @@
+膜版下载地址：https://github.com/iview/iview-admin
+
+1.7-31把代码添加到git上，熟悉下框架，尝试把不用的页面删除
+
+2.8-1~8-2 熟悉vue router的用法  并且按已做好的管理后台建好对应的菜单 
+
+3.8-5 熟悉vuex的用法 掌握基本的读写用法  写一个demo  在一个页面上有个输入框 和确定按钮 可以修改用户名
+
+4.8-6读一遍https://vue.docschina.org/v2/style-guide/
+
+5.8-6学习组件的开发
+
+6.8-7实现一个自定义组件开发，需要到时候我跟你们说
+
+7.8-8~8-16参考iview组件的用法开始每个页面的布局 https://www.iviewui.com/docs/guide/install
+
+8.8-19~8-23 跟后台连调接口
+
+
+需要了解：es6-promise 、es6的一些知识、
+vuex、vue-router

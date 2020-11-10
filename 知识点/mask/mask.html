@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>mask练习</title>
+    <link rel="stylesheet" type="text/css" href="css/mask.css">
+</head>
+<style type="text/css">
+    .line2 {
+        float: left; 
+        width: 60px; 
+        height: 1px; 
+        background-color: #000;
+        transform: scaleY(.5);
+    }
+</style>
+<body>
+    <div class="userBox">
+        <svg width="200" height="200">
+            <defs>
+                <mask id="maskImg" maskUnits="userSpaceOnUse" maskContentUnits="userSpaceOnUse">
+                    <image x="8.5" y="11" width="127" height="142" xlink:href="images/mask2x.png"></image>
+                </mask>
+            </defs>
+            <foreignObject width="144" height="164" style="mask:url(#maskImg)">
+                <div class="maskEG">
+                    <img height="164" src="images/avatar.png" />
+                </div>
+            </foreignObject>
+        </svg>
+    </div>
+    <div style="width: 100%; height:20px;">
+        <span style="float: left; width: 30px; height: 10px; border-top: 1px solid #000;"></span>
+        <span class="line2"></span>
+    </div>
+
+    <div class="box border"></div>
+    
+</body>
+</html>

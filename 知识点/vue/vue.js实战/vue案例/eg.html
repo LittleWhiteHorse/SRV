@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body> 
+    <div id="app" class="container"> 
+        <div class="row"> 
+            <div class="col-md-4"></div> 
+            <div class="col-md-4"> 
+                <div class="my-page"> 
+                    <div class="my-page-title"> 
+                        <span>调查问卷</span> 
+                    </div> 
+                    <testpaper :currentpage="currentpage" :quesnairelist="quesnairelist" :sex="sex" :hobby="hobby" :introduc="introduc"> 
+                        <template slot="my-page-testpaper" scope="props"> 
+                            <div class="my-page-testpaper-elm" v-show="props.quesnaireId==currentpage"> 
+                                <div class="my-page-testpaper-elm-problem" > 
+                                    <span>{{props.quesnaireId}}.{{props.quesnaireTitle}}</span> 
+                                </div> 
+                                <div class="my-page-testpaper-elm-center"> 
+                                    <div class="my-page-testpaper-elm-answer" v-if="props.quesnaireType=='radio'" v-for="(answer,index) in props.quesnaireValue"> 
+                                        <label for="index">{{props.quesnairevalue}}</label> 
+                                        <input id="index" type="radio" :value="answer" v-model="sex"> 
+                                    </div> 
+                                    <div class="my-page-testpaper-elm-answer" v-if="props.quesnaireType=='checkbox'" v-for="(answer,index) in props.quesnaireValue"> 
+                                        <label for="index">{{props.quesnairevalue}}</label> 
+                                        <input id="index" type="checkbox" :value="answer" v-model="hobby"> 
+                                    </div> 
+                                    <div class="my-page-testpaper-elm-answer" v-if="props.quesnaireType=='textarea'"> 
+                                        <textarea id="index" placeholder="请输入简介,不少于5个字" v-model="introduc" style="height: 70px"></textarea> 
+                                    </div> 
+                                </div> 
+                            </div> 
+                        </template> 
+                    </testpaper> 
+                    <mybtn :btnlist="btnlist" :currentpage="currentpage" :quesnairelist="quesnairelist" > 
+                        <template slot="my-page-mybtn" scope="props"> 
+                            <button :id="props.btnid" @click="handlerClick" v-show="props.btnid=='up'" :class="{computCls:currentpage==1}" class="btn btn-primary my-page-mybtnelm">{{props.btnname}}</button> 
+                            <button :id="props.btnid" @click="handlerClick" v-show="props.btnid=='next' && currentpage!=quesnairelist.length" class="btn btn-primary my-page-mybtnelm">{{props.btnname}}</button> 
+                            <button :id="props.btnid" @click="handlerClick" v-show="props.btnid=='reset'" class="btn btn-primary my-page-mybtnelm">{{props.btnname}}</button> 
+                            <button :id="props.btnid" @click="handlerClick" v-show="props.btnid=='submit' && currentpage==quesnairelist.length" class="btn btn-primary my-page-mybtnelm">{{props.btnname}}</button> 
+                        </template> 
+                    </mybtn> 
+                </div> 
+            </div> 
+            <div class="col-md-4"></div> 
+        </div> 
+    </div> 
+</body>
+</html>

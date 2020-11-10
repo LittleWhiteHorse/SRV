@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vue 示例</title>
+</head>
+<style>
+	[v-cloak]{
+		display: none;
+	}
+</style>
+<body>
+	<!-- 开篇示例 -->
+	<div id="appS">
+		<button v-if="showBtn" v-on:click="handleClick">Click me!</button>
+	</div>
+
+	<!-- 示例一 -->
+	<div id="app">
+		<ul>
+			<li v-for="book in books" v-cloak>{{book.name}}</li>
+		</ul>
+	</div>
+
+	<!-- 示例二 -->
+	<div id="app2">
+		<input type="text" v-model="name" placeholder="请输入你的名字" />
+		<h1 v-cloak>你好，{{ name }}</h1>
+	</div>
+
+	<!-- 示例三 -->
+	<div id="app3" v-cloak>
+		{{book}}
+		<br/>
+		{{date}}
+	</div>
+
+	<!-- 示例四 -->
+	<div id="app4">
+		<span v-html="link" ></span>
+		<span v-pre>{{这里的内容不会被编译的}}</span>
+	</div>
+
+	<!-- 示例五 -->
+	<div id="app5" v-cloak>
+		{{number/10}}
+		{{isOk ? '确定' : '取消'}}
+		{{text.split(',').reverse().join(',')}}
+	</div>
+
+	<!-- 示例六 -->
+	<div id="app6" v-cloak>
+		{{date | formatDate}}
+	</div>
+
+	<!-- 示例七 -->
+	<div id="app7">
+		<p v-if="show">显示这段文本</p>
+	</div>
+
+	<!-- 示例八 -->
+	<div id="app8">
+		<a v-bind:href="url">链接</a>
+		<img v-bind:src="imgUrl" alt="">
+	</div>
+
+	<!-- 实例九 -->
+		<!-- 写法1 -->
+		<div id="app9">
+			<p v-if="show">这是一段文本</p>
+			<button v-on:click="handleClose">点击隐藏</button>
+		</div>
+		<!-- 写法2 -->
+		<div id="app9_2">
+			<p v-if="show">这是一段文本。</p>
+			<button v-on:click="show=false">点击隐藏</button>
+		</div>
+		<!-- 写法3 -->
+		<div id="app9_3">
+			<p v-if="show">这是一段文本3.</p>
+			<button v-on:click="handleClose">点击隐藏</button>
+		</div>
+		<!--v-bind 的语法糖的写法 -->
+		<a v-bind:href="url"></a>
+		<img v-bind:src="imgUrl" alt="">
+		<!-- 缩写为 -->
+		<a :href="url">链接</a>
+		<img :src="imgUrl" alt="">
+		<!-- v-on 的语法糖的写法 -->
+		<button v-on:click="handleClose">点击隐藏</button>
+		<!-- 缩写为 -->
+		<button @clcik="handleClose">点击隐藏</button>
+
+	<!-- 第三章 示例十 -->
+	<div id="app10">
+		{{reversedText}}
+	</div>
+	
+	<!-- 示例十一 -->
+	<div id="app11" v-cloak>
+		总价：{{prices}}
+	</div>
+
+	<!-- 示例十二 -->
+	<div id="app12" v-cloak>
+		姓名：{{fullName}}
+	</div>
+
+	<!-- 示例十三 -->
+	<div id="app13_1"></div>
+	<div id="app13_2" v-cloak>
+		{{reversedText}}
+	</div>
+	
+	<!-- 第四章 示例十四 -->
+	<div id="app14">
+		<div :class="{'active':isActive}"></div>
+		<div class="test" :class="{'active':isActive,'error':isError}"></div>
+	</div>
+	
+	<!-- 示例十五 -->
+	<div id="app15">
+		<div :class = "classes"></div>
+	</div>
+
+	<!-- 示例十六 -->
+	<div id="app16">
+		<div :class="[activeCls,errorCls]"></div>
+	</div>
+
+	<!-- 示例十七 -->
+	<div id="app17">
+		<div :class="[isActive ? activeCls : '', errorCls]"></div>
+	</div>
+
+	<!-- 示例十八 -->
+	<div id="app18">
+		<div :class="[{'active':isActive},errorCls]"></div>
+	</div>
+
+	<!-- 示例十九 -->
+	<div id="app19">
+		<button :class="classes"></button>
+	</div>
+
+	<!-- 示例二十 -->
+	<div id="app20">
+		<div :style="{'color':color,'fontSize':fontSize+'px'}">文本</div>
+	</div>
+	
+	<!-- 示例二十一 -->
+	<div id="app21">
+		<div :style="styles">文本</div>
+	</div>
+
+	<!-- 示例二十二 -->
+	<div id="app22" v-cloak>
+		{{message}}
+	</div>
+
+	<!-- 示例二十三 -->
+	<div id="app23">
+		<span v-once>{{message}}</span>
+		<div v-once>
+			<span>{{message}}</span>
+		</div>
+	</div>
+
+	<!-- 示例二十四 -->
+	<div id="app24">
+		<p v-if="status===1">当status为1时显示该行</p>
+		<p v-else-if="status===2">当status为2时显示该行</p>
+		<p v-else>否则显示该行</p>
+	</div>
+
+	<!-- 示例二十五 -->
+	<div id="app25">
+		<template v-if="status===1">
+			<p>这是一段文本1</p>
+			<p>这是一段文本2</p>
+			<p>这是一段文本3</p>
+		</template>
+	</div>
+
+	<!-- 示例二十六 -->
+	<div id="app26">
+		<template v-if="type==='name'">
+			<label>用户名：</label>
+			<input type="text" placeholder="请输入用户名">
+		</template>
+		<template v-else>
+			<label>邮箱：</label>
+			<input type="text" placeholder="请输入邮箱">
+		</template>
+		<button @click="handleToggleClick">切换输入类型</button>
+	</div>
+
+	<!-- 示例二十七 -->
+	<div id="app27">
+		<template v-if="type==='name'">
+			<label>用户名：</label>
+			<input type="text" placeholder="输入用户名" key="name-input">
+		</template>
+		<template v-else>
+			<label>邮箱：</label>
+			<input type="text" placeholder="请输入邮箱" key="mail-input">
+		</template>
+		<button @click="handleToggleClick2">切换输入类型2</button>
+	</div>
+
+	<!-- 示例二十八 -->
+	<div id="app28">
+		<p v-show="status===1">当status为1时显示该行</p>
+	</div>
+
+	<!-- 示例二十九 -->
+	<div id="app29">
+		<ul>
+			<!-- 这里的in也可以替换成of -->
+			<li v-for="book in books">{{book.name}}</li>  
+		</ul>
+	</div>
+
+	<!-- 示例三十 -->
+	<div id="app30">
+		<ul>
+			<li v-for="(book,index) in books">{{index}}-{{book.name}}</li>
+		</ul>
+	</div>
+
+	<!-- 示例三十一 -->
+	<div id="app31">
+		<ul>
+			<template v-for="book in books">
+				<li>书名：{{book.name}}</li>
+				<li>作者：{{book.author}}</li>
+			</template>
+		</ul>
+	</div>
+
+	<!-- 示例三十二 -->
+	<div id="app32">
+		<span v-for="value in user">{{value}}</span>
+	</div>
+
+	<!-- 示例三十三 -->
+	<div id="app33">
+		<ul>
+			<li v-for="(value,key,index) in user">
+				{{index}}-{{key}}:{{value}}
+			</li>
+		</ul>
+	</div>
+
+	<!-- 示例三十四 -->
+	<div id="app34">
+		<span v-for="n in 10">{{n}}</span>
+	</div>
+
+	<!-- 示例三十五 -->
+	<div id="app35">
+		<ul>
+			<template v-for="book in books">
+				<li>书名：{{book.name}}</li>
+				<li>作者：{{book.author}}</li>
+			</template>
+		</ul>
+	</div>
+
+	<!-- 示例三十六 -->
+	<div id="app36">
+		<ul>
+			<template v-for="book in sortedBooks">
+				<li>书名：{{book.name}}</li>
+				<li>作者：{{book.author}}</li>
+			</template>
+		</ul>
+	</div>
+
+	<!-- 示例三十七 -->
+	<div id="app37">
+		点击次数：{{counter}}
+		<button @click="counter++">+ 1</button>
+	</div>
+
+	<!-- 示例三十八 -->
+	<div id="app38">
+		点击次数：{{counter}}
+		<button @click="handleAdd()">- 1</button>
+		<button @click="handleAdd(10)">- 10</button>
+	</div>
+
+	<!-- 示例三十九 -->
+	<div id="app39">
+		<a href="http://www.apple.com" @click="handleClick('禁止打开',$event)">打开链接</a>
+	</div>
+	<!-- 阻止单击事件冒泡 -->
+	<a @click.stop="handle"></a>
+	<!-- 提交事件不在重载页面 -->
+	<form @submit.prevent="handle"></form>
+	<!-- 修饰符可以串联 -->
+	<a @click.stop.prevent="handle"></a>
+	<!-- 只有修饰符 -->
+	<form @submit.prevent></form>
+	<!-- 添加事件侦听器时使用事件捕获模式 -->
+	<div @click.capture="handle">...</div>
+	<!-- 只当事件在该元素本身（而不是子元素）触发时触发回调 -->
+	<div @click.self="handle">...</div>
+	<!-- 只触发一次，组件同样适用 -->
+	<div @click.once="handle">...</div>
+	<!-- 只有在keyCode是13时调用vm.submit() -->
+	<input @keyCode.13="submit">
+	<!-- Shift+S -->
+	<input @keyup.shift.83="handleSave">
+	<!-- Ctrl+Click -->
+	<div @click.ctrl="doSomething">Do something</div>
+
+	<!-- 示例四十 -->
+	<div id="app40">
+		<input type="text" v-model="message" placeholder="输入...">
+		<p>输入的内容是：{{message}}</p>
+	</div>
+
+	<!-- 示例四十一 对于文本域textarea -->
+	<div id="app41">
+		<textarea v-model="text" placeholder="输入..."></textarea>
+		<p>输入的内容是：</p>
+		<p style="white-space:pre">{{text}}</p>
+	</div>
+
+	<!-- 示例四十二 -->
+	<div id="app42">
+		<input type="text" @input="handleInput" placeholder="输入...">
+		<p>输入的内容是：{{message}}</p>
+	</div>
+
+	<!-- 示例四十三 单选按钮 -->
+	<div id="app43">
+		<input type="radio" :checked="picked">
+		<label>单选按钮</label>
+	</div>
+
+	<!-- 示例四十四 -->
+	<div id="app44">
+		<input type="radio" v-model="picked" value="html" id="html">
+		<label for="html">HTML</label>
+		<br>
+		<input type="radio" v-model="picked" value="js" id="js">
+		<label for="js">JavaScript</label>
+		<br>
+		<input type="radio" v-model="picked" value="css" id="css">
+		<label for="css">CSS</label>
+		<br>
+		<p>选择的项是：{{picked}}</p>
+	</div>
+
+	<!-- 示例四十五 -->
+	<div id="app45">
+		<input type="checkbox" v-model="checked" id="checked">
+		<label for="checked">选择状态：{{checked}}</label>
+	</div>
+
+	<!-- 示例四十六 -->
+	<div id="app46">
+		<input type="checkbox" v-model="checked" value="html" id="html">
+		<label for="html">HTML</label>
+		<br>
+		<input type="checkbox" v-model="checked" value="js" id="js">
+		<label for="js">JS</label>
+		<br>
+		<input type="checkbox" v-model="checked" value="css" id="css">
+		<label for="css">CSS</label>
+		<br>
+		<p>选择的项是：{{checked}}</p>
+	</div>
+
+	<!-- 示例四十七 -->
+	<div id="app47">
+		<select v-model="selected">
+			<option>html</option>
+			<option value="js">JavaScript</option>
+			<option>css</option>
+		</select>
+		<p>选择的项是：{{selected}}</p>
+	</div>
+
+	<!-- 示例四十八 -->
+	<div id="app48">
+		<select v-model="selected">
+			<option v-for="option in options" :value="option.value">{{option.text}}</option>
+		</select>
+		<p>选择的项是：{{selected}}</p>
+	</div>
+
+	<!-- 示例四十九 单选按钮-->
+	<div id="app49">
+		<input type="radio" v-model="picked" :value="value">
+		<label>单选按钮</label>
+		<p>{{picked}}</p>
+		<p>{{value}}</p>
+	</div>
+	
+	<!-- 示例五十 -->
+	<div id="app50">
+		<input type="checkbox" v-model="toggle" :true-value="value1" :false-value="value2">
+		<label>复选框</label>
+		<p>{{toggle}}</p>
+		<p>{{value1}}</p>
+		<p>{{value2}}</p>
+	</div>
+
+	<!-- 示例五十一 -->
+	<div id="app51">
+		<input type="text" v-model.lazy="message">
+		<p>{{message}}</p>
+	</div>
+
+	<!-- 示例五十二 -->
+	<div id="app52">
+		<input type="number" v-model.number="message">
+		<p>{{typeof message}}</p>
+	</div>
+
+	<!-- 示例五十三 -->
+	<div id="app53">
+		<input type="text" v-model.trim="message">
+		<p>{{message}}</p>
+	</div>
+
+	<!-- 示例五十四 -->
+	<div id="app54">
+		<my-component></my-component>
+	</div>
+
+	<!-- 示例五十五 -->
+	<div id="app55">
+		<my-component></my-component>
+	</div>
+
+	<!-- 示例五十六 -->
+	<div id="app56">
+		<table>
+			<tbody is="my-component"></tbody>
+		</table>
+	</div>
+
+	<!-- 示例五十七 -->
+	<div id="app57">
+		<my-component></my-component>
+	</div>
+
+	<!-- 示例五十八 -->
+	<div id="app58">
+		<my-component></my-component>
+		<my-component></my-component>
+		<my-component></my-component>
+	</div>
+
+	<!-- 示例五十九 -->
+	<div id="app59">
+		<my-component></my-component>
+		<my-component></my-component>
+		<my-component></my-component>
+	</div>
+
+	<!-- 示例六十 -->
+	<div id="app60">
+		<my-component message="来自父组件的数据"></my-component>
+	</div>
+
+	<!-- 示例六十一 -->
+	<div id="app61">
+		<my-component warning-text="提示信息"></my-component>
+	</div>
+
+	<!-- 示例六十二 -->
+	<div id="app62">
+		<input type="text" v-model="parentMessage">
+		<my-component :message="parentMessage"></my-component>
+	</div>
+
+	<!-- 示例六十三 -->
+	<div id="app63">
+		<my-component message="[1,2,3]"></my-component>
+		<my-component :message="[1,2,3]"></my-component>
+	</div>
+
+	<!-- 示例六十四 -->
+	<div id="app64">
+		<my-component init-count="1"></my-component>
+	</div>
+
+	<!-- 示例六十五 -->
+	<div id="app65">
+		<my-component :width="100"></my-component>
+	</div>
+	
+	<!-- 示例六十六 -->
+	<div id="app66">
+		<my-component :width="100"></my-component>
+	</div>
+
+	<!-- 示例六十七 -->
+	<div id="app67">
+		<p>总数：{{total}}</p>
+		<my-component @increase = "handleGetTotal" @reduce = "handleGetTotal"></my-component>
+	</div>
+
+	<!-- 示例六十八 -->
+	<div id="app68">
+		<p>总数：{{total}}</p>
+		<my-component v-model="total"></my-component>
+	</div>
+
+	<!-- 示例六十九 -->
+	<div id="app69">
+		<p>总数：{{total}}</p>
+		<my-component @input="handleGetTotal"></my-component>
+	</div>
+
+	<!-- 示例七十 -->
+	<div id="app70">
+		<p>总数：{{total}}</p>
+		<my-component v-model="total"></my-component>
+		<button @click="handleReduce">-1</button>
+	</div>
+
+	<!-- 示例七十一 注意：该示例需使用Vue.js 1.x的版本 -->
+	<!-- <div id="app71">
+		{{message}}
+		<my-component></my-component>
+	</div> -->
+
+	<!-- 示例七十二 -->
+	<div id="app72">
+		{{message}}
+		<component-a></component-a>
+	</div>
+
+	<!-- 示例七十三 -->
+	<div id="app73">
+		{{message}}
+		<component-a></component-a>
+	</div>
+
+	<!-- 示例七十四 -->
+	<div id="app74">
+		<button @click="handleRef">通过ref获取子组件实例</button>
+		<component-a ref="comA"></component-a>
+	</div>
+
+	<!-- 示例七十五  -->
+	<!-- <app>
+		<menu-main></menu-main>
+		<menu-sub></menu-sub>
+		<div class="container">
+			<menu-left></menu-left>
+			<container></container>
+		</div>
+		<app-footer></app-footer>
+	</app> -->
+	<div id="app75">
+		<child-component v-show="showChild"></child-component>
+	</div>
+	
+	<div id="app75-2">
+		<child-component></child-component>
+	</div>
+
+	<!-- 示例七十六 -->
+	<div id="app76">
+		<child-component>
+			<p>分发的内容</p>
+			<p>更多分发的内容</p>
+		</child-component>
+	</div>
+
+	<!-- 示例七十七 -->
+	<div id="app77">
+		<child-component>
+			<h2 slot='header'>标题</h2>
+			<p>正文内容</p>
+			<p>更多的正文内容</p>
+			<div slot="footer">底部信息</div>
+		</child-component>
+	</div>
+
+	<!-- 示例七十八 -->
+	<div id="app78">
+		<child-component>
+			<template scope="props">
+				<p>来自父组件的内容</p>
+				<p>{{props.msg}}</p>
+			</template>
+		</child-component>
+	</div>
+
+	<!-- 示例七十九 -->
+	<div id="app79">
+		<my-list :books="books">
+			<!-- 作用域插槽也可以是具名的Slot -->
+			<template slot="book" scope="props">
+				<li>{{props.bookName}}</li>
+			</template>
+		</my-list>
+	</div>
+
+	<!-- 示例八十 -->
+	<div id="app80">
+		<child-component>
+			<h2 slot="header">标题</h2>
+			<p>正文内容</p>
+			<p>更多的正文内容</p>
+			<div slot="footer">底部信息</div>
+		</child-component>
+	</div>
+
+	<!-- 示例八十一 -->
+	<div id="app81">
+		<child-component :count="1"></child-component>
+	</div>
+
+	<!-- 示例八十二 -->
+	<div id="app82">
+		<child-component inline-template>
+			<div>
+				<h2>在父组件中定义子组件的模板</h2>
+				<p>{{message}}</p>
+				<p>{{msg}}</p>
+			</div>
+		</child-component>
+	</div>
+
+	<!-- 示例八十三 -->
+	<div id="app83">
+		<component :is="currentView"></component>
+		<button @click="handleChangeView('A')">切换到A</button>
+		<button @click="handleChangeView('B')">切换到B</button>
+		<button @click="handleChangeView('C')">切换到C</button>
+	</div>
+
+	<!-- 示例八十四 -->
+	<div id="app84">
+		<component :is="currentView"></component>
+	</div>
+
+	<!-- 示例八十五 -->
+	<div id="app85">
+		<child-component></child-component>
+	</div>
+
+	<!-- 示例八十六 -->
+	<div id="app86">
+		<div id="div" v-if="showDiv">这是一段文本</div>
+		<button @click="getText">获取div内容</button>
+	</div>
+
+	<!-- 示例八十七 -->
+	<div id="app87">
+		<div id="div" v-if="showDiv">这是一段文本</div>
+		<button @click="getText">获取div内容</button>
+	</div>
+
+	<!-- 示例八十八 -->
+	<div id="app88">
+		<my-component></my-component>
+		<script type='text/x-template' id='my-component'>
+			<div>这是组件的内容（示例八十八）</div>
+		</script>
+	</div>
+
+	<!-- 示例八十九 -->
+	<div id="mount-div"></div>
+
+	<!-- 第八章 示例九十 -->
+	<div id="app90">
+		<input type="text" v-focus>
+	</div>
+
+	<!-- 示例九十一 -->
+	<div id="app91">
+		<div v-test:msg.a.b="message"></div>
+	</div>
+
+	<!-- 示例九十二 -->
+	<div id="app92">
+		<div v-test="{msg: 'hello', name: 'Aresn'}"></div>
+	</div>
+
+	<!-- 示例九十三 contains方法是用来判断元素A是否包含了元素B，包含返回true，不包含返回false -->
+	<div id="parent">
+		父元素
+		<div id="children">子元素</div>
+	</div>
+
+	<script src="js/vue.min.js"></script>
+	<script type="text/javascript" src="js/index.js"></script>
+</body>
+</html>
+

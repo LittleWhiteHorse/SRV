@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>调查问卷WebApp</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <div id="app" v-cloak>
+        <div>
+            <span>调查问卷</span>
+        </div>
+        <mysurvey :currentPage="currentPage" :sex="sex" :hobby="hobby" :introduce="introduce" :quesnairelist="quesnairelist">
+            <template slot="dataList" scope="props">
+                <div class="ask" v-show="props.quesnaireId==currentPage">
+                    <div class="problemTitle">
+                        <span>{{props.quesnaireId}}.{{props.quesnaireTitle}}</span>
+                    </div>
+                    <div class="problemContent">
+                        <div class="problemAnswer" v-for="(answer, index) in props.quesnaireValue" v-if="props.quesnaireType=='radio'">
+                            <input :id="index" type="radio" :value="answer" name="answer" v-model="sex">
+                            <label :for="index">{{answer}}</label>
+                            <br>
+                        </div>
+                        <div class="problemAnswer" v-for="(answer, index) in props.quesnaireValue" v-if="props.quesnaireType=='checkbox'">
+                            <input :id="index" type="checkbox" :value="answer" name="answer" v-model="hobby">
+                            <label :for="index">{{answer}}</label>
+                            <br>
+                        </div>
+                        <div class="problemAnswer" v-for="(answer, index) in props.quesnaireValue" v-if="props.quesnaireType=='textarea'">
+                            <textarea :id="index" placeholder="不少于100字" :value="answer" v-model="introduce"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </template>
+        </mysurvey>
+        <mybutton :btnlist="btnlist" :currentPage="currentPage" :quesnairelist="quesnairelist">
+            <template slot="buttonAll" scope="props">
+                <button :id="props.btnid" @click="handlerClick" v-show="props.btnid=='up'" :click="{computCls:currentPage==1}">{{props.btnname}}</button>
+                <button :id="props.btnid" @click="handlerClick" v-show="props.btnid=='next' && currentPage!=quesnairelist.length">{{props.btnname}}</button>
+                <button :id="props.btnid" @click="handlerClick" v-show="props.btnid=='reset'">{{props.btnname}}</button>
+                <button :id="props.btnid" @click="handlerClick" v-show="props.btnid=='submit' && currentPage==quesnairelist.length">{{props.btnname}}</button>
+            </template>
+        </mybutton>
+    </div>
+    <script type="text/javascript" src="../js/vue.min.js"></script>
+    <script type="text/javascript" src="index.js"></script>
+</body>
+</html>

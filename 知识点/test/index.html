@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>test</title>
+        <!-- <script src="jquery.min.js"></script> -->
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    </head>
+    <body>
+        <a href="javascript: alert('1111111')">点我一下</a>
+
+        <div id="box"></div>
+
+    </body>
+    <script type="text/javascript">
+
+        // console.log( '23' < '3' ) 
+        // console.log( '23' < 3 ) 
+        // console.log( 'a' < 3 )
+        // console.log( NaN < 3 )
+        // console.log( {} < 3 )
+
+        // let obj = {
+        //     name: 'tome'
+        // }
+        // let str = '123'
+        // function add(obj, str) {
+        //     // 还有作用域问题： 这里的str是参数，函数里的str的作用域是局部的，所以与全局变量无关，
+        //     // 函数里的变量，如果函数内部有定义，作用域只在函数内部，如果变量是在函数外部定义，就是全局作用域
+        //     obj.name = 'tt'
+        //     str = '111' //这里的str就是函数内部的参数str，是局部作用域
+        //     console.log(str)
+        // }
+        // add(obj, str) // 可以写成 add({name: 'tome', '123'}) 
+        // console.log(obj)
+        // console.log(str) // 所以str还是=123
+        
+        function setName (obj) {
+            console.log(obj)
+            obj.name = 'nic'
+            console.log(obj)
+            obj = new Object()
+            console.log(obj)
+            // obj.name = 'greg'
+        }
+        let person = new Object() //创建一个空对象
+        // console.log(person) // {}
+        setName(person)
+        console.log(person.name)
+        
+
+
+       
+        // console.log(Number.MAX_VALUE * Number.MAX_VALUE)
+        // var a = Infinity;
+        // a = 'abc' * 'bcd';
+        // a = Number.MIN_VALUE;
+        // console.log(a)
+
+        // var bool = true;
+        // console.log(bool)
+        // console.log(typeof bool)
+
+
+        // var b = null;
+        // console.log(b);
+        // console.log(typeof b)
+
+        // var c = undefined;
+        // console.log(c)
+        // console.log(typeof c)
+
+        // var aa = 123;
+        // 调用a的toString方法
+        // 调用xxx的yyy()方法,就是xxx.yyy()
+        // aa = true;
+
+        // aa = null;
+        // var ab = aa.toString(); 报错
+        
+        // aa = undefined;
+        // var ab = aa.toString(); 报错
+
+
+        // var ab = aa.toString();
+        
+        // var ab = String(aa);
+
+        // aa = null;
+        // ab = String(aa);
+
+        // aa = undefined;
+        // ab = String(aa)
+
+        // console.log(typeof aa);
+        // console.log(typeof ab);
+
+        // var str = '123';
+        // str = Number(str);
+
+        // str = true;
+        // str = Number(str);
+
+        // str = null;
+        // str = Number(str);
+
+        // str = undefined;
+        // str = Number(str);
+
+        // str = '123.456px';
+        // str = parseInt(str)
+        // str = parseFloat(str)
+
+        // console.log(typeof str);
+        // console.log(str);
+        
+        // var bool = 123;  // true
+        // bool = -123;  // true
+        // bool = 0; // false
+        // bool = Infinity; //false
+        // bool = NaN; // false
+        // bool = 'hello'; // true
+        // bool = 'true'; // true
+        // bool = '错误'; //true
+        // bool = ''; // false
+        // bool = '  '; // true
+        // bool = null; //false
+        // bool = undefined //false
+        // bool = Boolean(bool);
+        // console.log(typeof bool);
+        // console.log(bool);
+        
+
+        // var addA = 123;
+        // var addRes = addA + 1;
+        // addRes = true + 1; // 2
+        // addRes = true + false; // 1
+        // addRes = 2 + null; // 2
+        // addRes = 2 + NaN; // NaN
+        // addRes = '123' + '456'; // '123456' string
+        // addRes = 123 + 'hel1lo'; // 123hello
+        // addRes = true + 'hello'; // truehello
+        // console.log(addRes)
+        
+        // var reduce = 'hello' - '456';
+        
+        // var getMo = 9 % 3; // 0
+        // getMo = 9 % 4; //1
+        // console.log(getMo)
+        
+
+        // var oneA = 123
+        // oneA = + oneA
+        // oneA = - oneA
+
+        // oneA = true;
+        // oneA = - oneA
+        // console.log(oneA)
+        
+        // var aaa = 1;
+        // // aaa++; // 使aaa自增1
+        // aaa--;
+        // console.log(aaa) 
+
+        // var d = 20;
+        // var result = d++ + ++d + d;
+        // console.log(result);
+        // d = d++; // d=20
+        // console.log(d)
+        
+        // var e = 10;
+        // e--; // 9
+        // console.log('e = ' + e) // 9
+        // --e
+        // console.log('e = ' + e) // 9
+        // console.log(e--)
+        // console.log(--e)
+        
+
+        //自增和自减
+        // var n1 = 10, n2 = 20;
+        // var n = n1++;
+        // console.log('n =' + n) // 10
+        // console.log('n1 = ' + n1) // 11
+        // n = ++n1;
+        // console.log('n=' + n) // 12
+        // console.log('n1=' + n1) //12
+        // n = n2--;
+        // console.log('n=' + n) //20
+        // console.log('n2=' + n2) //19
+        // n = --n2;
+        // console.log('n=' + n) // 18
+        // console.log('n2=' + n2) // 18
+        
+
+        // var panA = false;
+        // panA = !panA;
+        // console.log('panA='+panA)
+        
+        // var panB = 0;
+        // panB = !panB;
+        // console.log('panB=' + panB);
+        // console.log(typeof panB);
+        
+        // var result = true && true;
+        // result = true && false;
+        // result = false && false;
+        // console.log('result='+ result)
+        
+        // var result = true || false;
+        // result = false || true;
+        // result = true || true;
+        // console.log('result=' + result)
+        
+        // console.log(1 == 1) // true
+        // var a = 10;
+        // console.log(a == 4) // false
+        // console.log(1 == '1') // true
+        // console.log(true == '1') // true
+        // console.log(null == 0); // false
+        // console.log(undefined == null); // true
+        // console.log(NaN == NaN) //false
+        // console.log(NaN == 1) //false
+        // var b = NaN;
+        // console.log(b == NaN) //false, NaN和任何值做相等判断都是false包括它本身
+        // console.log(isNaN(b)); // isNaN()函数用来判断变量是不是NaN，是返回true，不是返回false。
+        
+        // console.log(10 != 5); // true
+        // console.log(10 != 10); // false
+        // console.log('abcd' != 'abcd') //false
+        // console.log('1' != 1) // false
+
+        // console.log(123 == '123') // true
+        // console.log(123 === '123') // false
+        // console.log(null == undefined) // true
+        // console.log(null === undefined) // false
+
+        // console.log(1 != '1'); // false
+        // console.log(1 !== '1'); // true
+        
+
+        // true ? alert('语句一') : alert('语句二');
+        // false ? alert('语句一') : alert('语句二');
+        // var a = 30;
+        // var b = 20;
+        // var c = 50;
+        // a > b ? alert('a大') : alert('b大');
+        // 
+        // 获取a和b中的最大值
+        // var max = a > b ? a : b;
+        // // 获取a、b 、c中的最大值
+        // max = max > c ? max : c;
+        // console.log('max=' + max);
+        // 
+        // 这种方法不推荐使用，不方便阅读
+        // var max = a > b ? a > c ? a : c : b > c ? b : c;
+        // var max = a > b ? (a > c ? a : c) : (b > c ? b : c);
+        // console.log('max=' + max);
+        
+        // "hello" ? alert('语句一') : alert('语句二');
+        
+        // 使用,运算符，同时声明多个变量
+        // var a, b, c;
+        // 使用,运算符，可以同时声明多个变量并赋值
+        // var a = 1, b = 2, c = 3;
+
+
+        // var result = 1 + 2 + 3;
+        //
+        // var result = 1 || 2 && 3;
+        // console.log('result=' + result);
+
+
+        // 这是一个代码块
+        // {
+        //     var a = 10;
+        //     alert('1')
+        // }
+
+
+        // alert('hello');
+        // console.log('您好');
+
+
+        // if语句
+        // var a = 11;
+
+        // if (a > 10) {
+        //     alert('a比10达~~')
+        //     alert('谁也管不了我');
+        // }
+        // var b = 15;
+        // if (b > 10 && b <= 20) {
+        //     alert('b大于10，并小于等于20.')
+        // }
+
+        // var age = 10;
+        // if (age >= 60) {
+        //     alert('您已经退休了。')
+        // } else {
+        //     alert('您还没有退休。')
+        // }
+
+        // if (age > 100) {
+        //     alert('活着挺没意思?')
+        // } else if (age > 80) {
+        //     alert('你也老大不小了。')
+        // } else if (age > 60) {
+        //     alert('你也退休了。')
+        // } else if (age > 30) {
+        //     alert('你已经中年了。')
+        // } else if (age > 17) {
+        //     alert('你已经成年了。')
+        // } else {
+        //     alert('你还是个小孩子。')
+        // }
+        // 
+        // 练习一：
+        // 从键盘输入小明的期末成绩：
+        // 当成绩为100时，“奖励一辆BMW”
+        // 当成绩为80~90时，“奖励一台iphone15s”
+        // 当成绩为60~80时，“奖励一本参考书”
+        // 其他时，什么奖励也没有
+        // var score = prompt("请输入小明的期末成绩")
+
+        // if (score == 100) {
+        //     alert('奖励一辆BMW');
+        // } else if (score < 90 && score >= 80) {
+        //     alert('奖励一台iphone15s');
+        // } else if (score < 80 && score >= 60) {
+        //     alert('奖励一本参考书');
+        // }
+        
+
+        // 练习二：
+        // 大家都知道，男大当婚，女大当嫁，那么女方家长要嫁女儿，当然哟提出一定的条件
+        // 高：180cm以上；富：1000万以上；帅：500以上；
+        // 如果这三个条件同时满足，则：“我一定要嫁给他”
+        // 如果三个条件有为真的情况，则：“嫁吧，比上不足，比下有余。”
+        // 如果三个条件都不满足，则：“不嫁”。
+        // var height = prompt("请输入您的身高(cm):");
+        // var money = prompt("请输入您的存款(万):");
+        // var level = prompt("请输入您的颜值分数：");
+        // if (height > 180 && money > 1000 && level > 500) {  
+        //     alert('我一定要嫁给他')
+        // } else if (height > 180 || money > 1000 || level > 500) {
+        //     alert('嫁吧，比上不足，比下有余')
+        // } else {
+        //     alert('不嫁')
+        // }
+
+
+        // 练习三：
+        // 编写程序，由键盘输入三个整数分别存入变量num1，num2，num3，
+        // 对他们进行排序，并且从小到大输出
+        // var num1 = +prompt('请输入第一个数字：');
+        // var num2 = +prompt('请输入第二个数字：');
+        // var num3 = +prompt('请输入第三个数字：');
+        // if (num1 < num2 && num1 < num3) {
+        //     if (num2 > num3) {
+        //         alert(num2 + '>' + num3 + '>' + num1);
+        //     } else {
+        //         alert(num3 + '>' + num2 + '>' + num1);
+        //     }
+        // } else if (num2 < num1 && num2 < num3) {
+        //     if (num1 > num3) {
+        //         alert(num1 + '>' + num3 + '>' + num2);
+        //     } else {
+        //         alert(num3 + '>' + num1 + '>' + num2);
+        //     }
+        // } else if (num3 < num1 && num3 < num2) {
+        //     if (num1 > num2) {
+        //         alert(num1 + '>' + num2 + '>' + num3);
+        //     } else {
+        //         alert(num2 + '>' + num1 + '>' + num3);
+        //     }
+        // }
+
+
+        // 根据num的值，输入对应的中文
+        // var num = 'aaa';
+        // if (num == 1) {
+        //     console.log('壹')
+        // } else if (num == 2) {
+        //     console.log('贰')
+        // }
+        // switch (num) {
+        //     case 1:
+        //         console.log('壹');
+        //         break;  // 使用break可以来退出switch语句
+        //     case 2:
+        //         console.log('贰');
+        //         break;
+        //     case 3:
+        //         console.log('叁');
+        //         break;
+        //     default:
+        //         console.log('非法数字');
+        //         break;
+        // }
+        
+        // switch练习一：
+        // 对于成绩大于60分的，输出‘合格’，低于60分的，输出‘不合格’。
+        // var score = prompt('请输入您的成绩');
+        // 方法一：
+        // switch (parseInt(score / 10)) {
+        //     case 10: 
+        //     case 9: 
+        //     case 8: 
+        //     case 7:
+        //     case 6:  
+        //         console.log('合格~');
+        //         break;
+        //     default:
+        //         console.log('不合格');
+        //         break;
+        // }
+        // 方法二：
+        // switch (true) {
+        //     case score > 60:
+        //         console.log('合格~');
+        //         break;
+        //     default:
+        //         console.log('不合格~');
+        //         break;
+        // }
+
+
+
+        // switch练习二：
+        // 从键盘接收整数参数，如果该数为1-7，打印对应的星期，否则打印非法参数。
+        // var keyNum = prompt('请输入数字');
+        // switch (keyNum) {
+        //     case '1':
+        //         console.log('星期一~');
+        //         break;
+        //     case '2':
+        //         console.log('星期二~');
+        //         break;
+        //     case '3':
+        //         console.log('星期三~');
+        //         break;
+        //     case '4':
+        //         console.log('星期四~');
+        //         break;
+        //     case '5':
+        //         console.log('星期五~');
+        //         break;
+        //     case '6':
+        //         console.log('星期六~');
+        //         break;
+        //     case '7':
+        //         console.log('星期日~');
+        //         break;
+        //     default:
+        //         console.log('非法数字');
+        //         break;
+        // }
+
+        // var n = 1;
+        // //像这种将表达式写死为true的循环，叫做死循环
+        // //该循环不会停止，除非浏览器关闭，死循环在开发中慎用
+        // //可以使用break来终止循环
+        // while (true) {
+        //     alert(n++);
+        //     // 判断n是否等于10
+        //     if (n == 10) {
+        //         // 退出循环
+        //         break;
+        //     }
+        // }
+        
+
+        // 创建一个循环的，往往需要三个步骤：
+        // 1.创建初始化一个变量
+        // var i = 0;
+        // // 2.在循环中设置一个条件表达式
+        // while (i < 10) {
+        //     alert(i)
+        //     // 3.定义一个更新表达式，每次更新初始化变量
+        //     i++;
+        // }
+
+        // var i = 11;
+        // // while (i <= 10) {
+        // //     document.write(i++ + '</br>');
+        // // }
+
+        // do {
+        //     document.write(i++ + '</br>');
+        // } while (i < 10)
+
+        // while循环的练习：
+        // 假如投资的年利率为5%，试求从1000块增长到5000块，需要花费多少年
+        // var money = 1000;
+        // var count = 0;
+        // while (money < 5000) {
+        //     money *= 1.05;
+        //     count++;
+        // }
+        // console.log(count);
+
+
+        // for (var i = 0; i < 10; i++) {
+        //     alert(i)
+        // }
+        // var i = 0;
+        // for (; i < 10; ) {
+        //     alert(i++)
+        // }
+        // 死循环
+        // for (;;) {
+        //     alert('hello')
+        // }
+        
+        // for循环的练习一：
+        // 打印1-100之间所有奇数之和
+        // 创建一个变量，保存奇数之和
+        // var num = 0;
+        // // 打印1-100的数
+        // for (var i = 1; i <= 100; i++) {
+        //     // 判断i是否是奇数
+        //     if (i % 2 != 0) {
+        //         console.log(i)
+        //         num = num + i;
+        //     }
+        // }
+        // console.log(num)
+        
+        // for循环的练习二：
+        // 打印1-100之间所有7的倍数的个数及总和
+        // var count = 0;
+        // var sum = 0;
+        // for (var k = 1; k <= 100; k++) {
+        //     if (k % 7 == 0) {
+        //         console.log(k);
+        //         sum = sum + k;
+        //         count++;
+        //     }
+        // }
+        // console.log('个数为' + count + ' 总和为' + sum);
+
+        // for循环的练习三：
+        // 水仙花数，水仙花数是指一个3位数，他的每个位上的数字的3次幂之和等于它本身
+        // 例如：1^3 + 5^3 + 3^3 = 153,请打印所有水仙花数
+        // for (var j = 100; j < 1000; j++) {
+        //     // 获取j的百位十位个位数字
+        //     var bai = parseInt(j / 100);
+        //     var shi = parseInt((j - bai * 100) / 10);
+        //     var ge = parseInt(j % 10);
+        //     var sum = bai * bai * bai + shi * shi * shi + ge * ge * ge;
+        //     if (sum == j) {
+        //         console.log(sum);
+        //     }
+        // }
+        
+        // for循环练习四：
+        // 在页面中接收一个用户输入的数字，并判断该数字是否是质数
+        // 质数：只能被1和他自身整除的数，1不是质数也不是合数，质数必须是大于1的自然数
+        // var num = prompt('请输入一个大于1的整数：');
+        // if (num < 1) {
+        //     alert('该值不符合要求');
+        // } else {
+        //     var flag = true;
+        //     for (var n = 2; n < num; n++) {
+        //         if (num % n == 0) {
+        //             flag = false;
+        //         }
+        //     }
+        // }
+        // if (flag) {
+        //     alert(num + '是质数') 
+        // } else {
+        //     alert(num + '不是质数') 
+        // }
+
+
+        // 嵌套for循环
+        // for (var i = 0; i < 5; i++) {
+        //     for (var n = 0; n <= i; n++) {
+        //         document.write('* &nbsp;&nbsp;')
+        //     }
+        //     document.write('<br/>')
+        // }
+        // for (var i = 0; i < 5; i++) {
+        //     for (var n = 5; n > i; n--) {
+        //         document.write('* &nbsp;&nbsp;')
+        //     }
+        //     document.write('<br/>')
+        // }
+        
+        // // for循环练习
+        // // 1.打印99乘法表
+        // for (var n = 1; n <= 9; n++) {
+        //     for (var m = 1; m <= n; m++) {
+        //         document.write('<span style="display: inline-block; width: 90px;">' + m + ' * ' + n + ' = ' + m * n + ' </span>')
+        //     }
+        //     document.write('<br/>')
+        // }
+
+        // // 2.打印出1-100之间的所有的质数
+        // for (var i = 2; i <= 100; i++) {
+        //     var forA = true
+        //     for (var j = 2; j < i; j++) {
+        //         if (i % j == 0) {
+        //             forA = false;
+        //         }
+        //     }
+        //     if (forA) {
+        //         console.log(i)
+        //     }
+        // }
+
+        // break关键字
+        // for (var i = 0; i < 5; i++) {
+        //     console.log(i);
+        //     if (i == 2) {
+        //         break;  // 虽然写在if中，这个是作用于for循环的
+        //     }
+        // }
+        
+        // 可以为循环语句创建一个label标签，来标识当前的循坏
+        // label: 循环语句
+        // label并不是一定要写label，创建名字
+        // 使用break语句时，可以在break后跟着一个label，这样break将会结束指定的循环，而不是最近的
+        // outer: for (var i = 0; i < 5; i++) {
+        //     console.log('@外部循环！' + i);
+        //     for (var j = 0; j < 5; j++) {
+        //         break outer;
+        //         console.log('@内部循坏！' + j);
+        //     }
+        // }
+        
+        // continue关键字
+        // for (var i = 0; i < 5; i++) {
+        //     for (var j = 0; j < 5; j++) {
+        //         if (j == 2) {
+        //             continue;
+        //         }
+        //         console.log('@内部循坏！' + j);
+        //     }
+        //     console.log('@----->外部循环！' + i);
+        // }
+
+
+        // object 对象
+        // 3. 自定义对象
+        // 使用new关键字调用的函数，是构造函数constructor
+        // 构造函数是专门用来创建对象的函数
+        // 使用typeof检查一个对象时，会返回object
+        // var obj = new Object(); 
+        // 在对象中保存的值称为属性
+        // 向对象中添加属性
+        //  语法： 对象.属性名 = 属性值
+        // obj.name = '孙悟空';
+        // obj.gender = '男';
+        // obj.age = 18;
+        // // 读取对象中的属性
+        // //  语法： 对象.属性名
+        // //  如果读取对象中没有的属性，不会报错的，而是会返回undefined。
+        // console.log(obj.name);
+        // console.log(obj.age);
+        // console.log(obj.gender);
+        // 修改对象属性值
+        // 语法： 对象.属性名 = 新值
+        // obj.name = '大圣';
+        // console.log(obj.name);
+        // 删除对象属性
+        // 语法： delete 对象.属性
+        // delete obj.age;
+        // console.log(obj);
+
+
+        // 创建一个对象
+        // var obj2 = new Object();
+        // obj2.name = '猪八戒';
+        // obj.test = obj2;
+        // console.log(obj);
+
+        // // 检查obj中是否有test2属性
+        // console.log('test2' in obj);
+        
+
+        // var a = 123;
+        // var b = a;
+        // a++;
+        // // console.log('a=' + a);
+        // // console.log('b=' + b);
+        // var obj = new Object();
+        // obj.name = '孙悟空';
+        // var obj2 = obj;
+        // // 修改obj的name属性
+        // obj.name = '猪八戒';
+        // // console.log(obj.name);
+        // // console.log(obj2.name);
+        // obj2 = null;
+        // // console.log(obj);
+        // // console.log(obj2);
+        // var c = 10;
+        // var d = 10;
+        // console.log(c == d);
+        // var obj3 = new Object();
+        // var obj4 = new Object();
+        // obj3.name = '沙和尚';
+        // obj4.name = '沙和尚';
+        // console.log(obj3 == obj4)
+
+        // 创建一个对象
+        // 方式1：var obj = new Object();
+        // 方式2： 使用对象字面量来创建一个对象
+        // var obj = {};
+        // // console.log(typeof obj);
+        // obj.name = 'sunwukong';
+        // console.log(obj)
+
+        // var obj2 = {
+        //     name: '猪八戒',
+        //     age: 28,
+        //     gender: '男',
+        //     test: {
+        //         name: '沙和尚'
+        //     }
+        // };
+
+        // console.log(obj2)
+        
+        // function aa () {
+        //     setTimeout( () => {
+        //         console.log(this)
+        //     }, 500)
+        // }
+        // aa()
+
+        // function ee () {
+        //     setTimeout( function () {
+        //         console.log(this)
+        //     }, 500)
+        // }
+        // ee()
+
+    </script>
+</html>
+
+
+
+
+
